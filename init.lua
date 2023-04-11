@@ -1,5 +1,8 @@
 vim.g.mapleader = ' '
 vim.cmd('set tabstop=2')
+vim.cmd('set shiftwidth=4')
+
+vim.cmd('set foldmethod=syntax')
 
 
 vim.cmd [[packadd packer.nvim]]
@@ -43,7 +46,7 @@ require 'packer'.startup(function(use)
 				options = {
 				  theme = 'tokyonight',
 					disabled_filetypes = { 
-						statusline = { 'packer', 'NvimTree' } 
+						statusline = { 'packer', 'neo-tree' } 
 					}
 				}
 			}
@@ -67,9 +70,32 @@ require 'packer'.startup(function(use)
 			insert_mappings = true,
 			persist_size = true,
 			auto_scroll = true,
-			direction = 'horizontal'
+			direction = 'horizontal',
+			shell = 'pwsh'
 		})
 	end}
+	use 'f-person/git-blame.nvim'
+	use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
+  }
+		use 'mattn/emmet-vim'
+		use {
+				"startup-nvim/startup.nvim",
+				requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+				config = function()
+						require"startup".setup({
+								theme = 'evil'
+						})
+				end
+		}
+		use {
+				"windwp/nvim-autopairs",
+		}
+		use 'Shatur/neovim-session-manager'
+		use {'stevearc/dressing.nvim'}
 end)
 
 
@@ -89,6 +115,9 @@ require'nvim-treesitter.configs'.setup {
 	ensure_installed = { 'typescript', 'javascript', 'html', 'css', 'json' },
 	highlight = {
 		enable = true
+	},
+	autotag = {
+    enable = true,
 	}
 }
 
@@ -96,7 +125,6 @@ require'nvim-treesitter.configs'.setup {
 --
 local lspconfig = require('lspconfig')
 lspconfig.tsserver.setup {}
-
 
 -- configure coc
 require('cocsettings')
@@ -108,3 +136,9 @@ require('telescopeconfig')
 
 -- configure neotree
 require('neotreeconfig')
+
+-- configure autopair with coc
+require('autopairconfig')
+
+
+require('sessionconfig')
