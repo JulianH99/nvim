@@ -15,7 +15,7 @@ require 'packer'.startup(function(use)
   use {'gpanders/editorconfig.nvim'}
   use 'folke/tokyonight.nvim'
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
     -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
@@ -95,6 +95,7 @@ require 'packer'.startup(function(use)
 				"windwp/nvim-autopairs",
 		}
 		use 'Shatur/neovim-session-manager'
+		use 'tpope/vim-fugitive'
 		use {'stevearc/dressing.nvim'}
 end)
 
@@ -140,5 +141,8 @@ require('neotreeconfig')
 -- configure autopair with coc
 require('autopairconfig')
 
-
+-- configure sessions
 require('sessionconfig')
+
+-- configurte lualine
+require('luaconfig')
