@@ -1,9 +1,20 @@
 vim.g.mapleader = ' '
 vim.cmd('set tabstop=2')
-vim.cmd('set shiftwidth=4')
-
+vim.cmd('set shiftwidth=2')
+vim.cmd('set textwidth=80')
 vim.cmd('set foldmethod=syntax')
+-- vim.g.tokyodark_transparent_background = false
+vim.cmd('colorscheme tokyonight-night')
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.opt.smartindent = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.scrolloff = 8
 
+vim.opt.colorcolumn = "80"
+
+vim.opt.wrap = false
 
 vim.cmd [[packadd packer.nvim]]
 
@@ -39,12 +50,12 @@ require 'packer'.startup(function(use)
 		end
 	}
 	use {
-  	'nvim-lualine/lualine.nvim',
-  	requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
 		config = function()
 			require'lualine'.setup {
 				options = {
-				  theme = 'tokyonight',
+					theme = 'tokyonight',
 					disabled_filetypes = { 
 						statusline = { 'packer', 'neo-tree' } 
 					}
@@ -52,20 +63,8 @@ require 'packer'.startup(function(use)
 			}
 		end
 	}
-	use {
-    'akinsho/bufferline.nvim', 
-		tag = "v3.*", 
-		requires = 'nvim-tree/nvim-web-devicons',
-		config = function()
-			vim.opt.termguicolors = true
-			require('bufferline').setup({
-				options = {
-					separator_style = "slope"
-				}
-			})
-  end}
 	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-  		require("toggleterm").setup({
+		require("toggleterm").setup({
 			open_mapping = [[<c-\>]],
 			insert_mappings = true,
 			persist_size = true,
@@ -81,33 +80,27 @@ require 'packer'.startup(function(use)
       require('gitsigns').setup()
     end
   }
-		use 'mattn/emmet-vim'
-		use {
-				"startup-nvim/startup.nvim",
-				requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-				config = function()
-						require"startup".setup({
-								theme = 'evil'
-						})
-				end
-		}
-		use {
-				"windwp/nvim-autopairs",
-		}
-		use 'Shatur/neovim-session-manager'
-		use 'tpope/vim-fugitive'
-		use {'stevearc/dressing.nvim'}
+	use 'mattn/emmet-vim'
+	use {
+		"startup-nvim/startup.nvim",
+		requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+		config = function()
+			require"startup".setup({
+				theme = 'evil'
+			})
+		end
+	}
+	use {
+		"windwp/nvim-autopairs",
+	}
+	use 'Shatur/neovim-session-manager'
+	use 'tpope/vim-fugitive'
+	use {'stevearc/dressing.nvim'}
 end)
 
 
 
 require('keymaps')
-
--- vim.g.tokyodark_transparent_background = false
-vim.cmd('colorscheme tokyonight-night')
-vim.cmd('set number')
-
-
 
 -- setup plugins
 --
