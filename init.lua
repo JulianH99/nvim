@@ -14,7 +14,14 @@ vim.opt.scrolloff = 8
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.termguicolors = true
+
 vim.opt.wrap = false
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("UserProfile") .. "/.vim/undodir"
+vim.opt.undofile = true
+
 
 vim.cmd [[packadd packer.nvim]]
 
@@ -30,22 +37,10 @@ require 'packer'.startup(function(use)
     -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = { 
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
-  }
 	use {
     "ahmedkhalf/project.nvim",
-    config = function()
-    			require("project_nvim").setup {
-			      -- your configuration comes here
-			      -- or leave it empty to use the default settings
-			      -- refer to the configuration section below
+		config = function()
+				require("project_nvim").setup {
 			}
 		end
 	}
@@ -57,7 +52,7 @@ require 'packer'.startup(function(use)
 				options = {
 					theme = 'tokyonight',
 					disabled_filetypes = { 
-						statusline = { 'packer', 'neo-tree' } 
+						statusline = { 'packer', 'nvim-tree' } 
 					}
 				}
 			}
@@ -93,9 +88,31 @@ require 'packer'.startup(function(use)
 	use {
 		"windwp/nvim-autopairs",
 	}
-	use 'Shatur/neovim-session-manager'
 	use 'tpope/vim-fugitive'
 	use {'stevearc/dressing.nvim'}
+
+	use {
+		"folke/trouble.nvim",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("trouble").setup {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			}
+		end
+	}
+	use 'ThePrimeagen/harpoon'
+	use("mbbill/undotree")
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons', -- optional
+		},
+		config = function()
+			require("nvim-tree").setup {}
+		end
+	}
 end)
 
 
@@ -127,15 +144,10 @@ require('cocsettings')
 -- configure telescope
 require('telescopeconfig')
 
-
--- configure neotree
-require('neotreeconfig')
-
 -- configure autopair with coc
 require('autopairconfig')
 
--- configure sessions
-require('sessionconfig')
-
 -- configurte lualine
 require('luaconfig')
+
+

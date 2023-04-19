@@ -6,6 +6,8 @@ map('n', '<C-j>', '<C-w>j', { noremap = true })
 map('n', '<C-k>', '<C-w>k', { noremap = true })
 map('n', '<C-l>', '<C-w>l', { noremap = true })
 
-map('n', '<leader>lg', ':Git<cr>', { noremap = true, silent = true })
+map('n', '<leader>lg', ':Gtabedit :<cr>', { noremap = true, silent = true })
+
+map('n', '<leader>bb', ':NvimTreeToggle<cr>', { noremap = true, silent =  true })
 
 
