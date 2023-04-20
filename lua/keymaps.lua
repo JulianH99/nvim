@@ -10,4 +10,8 @@ map('n', '<leader>lg', ':Gtabedit :<cr>', { noremap = true, silent = true })
 
 map('n', '<leader>bb', ':NvimTreeToggle<cr>', { noremap = true, silent =  true })
 
+map('n', '<leader>gpm', ':Git push origin main<cr>', { noremap = true })
+map('n', '<leader>gpp', ':Git pull origin main<cr>', { noremap = true })
 
+map('n', '<c-d>', '<c-d>zz', { noremap = true })
+map('n', '<c-u>', '<c-u>zz', { noremap = true })
