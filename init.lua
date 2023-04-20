@@ -145,7 +145,5 @@ require('cocsettings')
 -- configure autopair with coc
 require('autopairconfig')
 
--- configurte lualine
-require('luaconfig')
 
 
