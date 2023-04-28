@@ -3,8 +3,6 @@ vim.cmd('set tabstop=2')
 vim.cmd('set shiftwidth=2')
 vim.cmd('set textwidth=80')
 vim.cmd('set foldmethod=syntax')
--- vim.g.tokyodark_transparent_background = false
-vim.cmd('colorscheme catppuccin-macchiato')
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.smartindent = true
@@ -21,13 +19,15 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("UserProfile") .. "/.vim/undodir"
 vim.opt.undofile = true
-
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 vim.cmd [[packadd packer.nvim]]
 
 require 'packer'.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-treesitter/nvim-treesitter'
+	use 'nvim-treesitter/nvim-treesitter-context'
   use 'neovim/nvim-lspconfig'
   use {'neoclide/coc.nvim', branch = 'release'}
   use {'gpanders/editorconfig.nvim'}
@@ -47,14 +47,7 @@ require 'packer'.startup(function(use)
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
 		config = function()
-			require'lualine'.setup {
-				options = {
-					theme = 'catppuccin',
-					disabled_filetypes = { 
-						statusline = { 'packer', 'nvim-tree' } 
-					}
-				}
-			}
+			require'lualine'.setup {}
 		end
 	}
 	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
@@ -108,13 +101,17 @@ require 'packer'.startup(function(use)
 			require("nvim-tree").setup {}
 		end
 	}
-	use { "catppuccin/nvim", as = "catppuccin" }
+	use "rebelot/kanagawa.nvim"
 	use {
 		'numToStr/Comment.nvim',
 		config = function()
 			require('Comment').setup()
 		end
 	}
+
+	use "lukas-reineke/indent-blankline.nvim"
+	use "tpope/vim-surround"
+	use 'nanozuki/tabby.nvim'
 end)
 
 
@@ -147,3 +144,4 @@ require('autopairconfig')
 
 
 
+vim.cmd('colorscheme kanagawa-dragon')

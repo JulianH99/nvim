@@ -17,10 +17,33 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fp', ':Telescope projects<cr>',  { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
-
+vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 
 telescope.setup {
 	theme = 'evil',
+
+	pickers = {
+		live_grep = {
+			theme = 'dropdown'
+		},
+		find_files = {
+			theme = 'dropdown',
+			preview = false
+		},
+		buffers = {
+			theme = 'dropdown',
+			preview = false,
+		},
+		projects = { 
+			theme = 'dropdown'
+		},
+		current_buffer_fuzzy_find = {
+			theme = 'dropdown'
+		},
+		git_branches = {
+			theme = 'dropdown'
+		}
+	},
 	defaults = {
 		mappings = {
 			n = {
