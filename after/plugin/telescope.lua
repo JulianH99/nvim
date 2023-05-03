@@ -53,5 +53,11 @@ telescope.setup {
 				['<c-d>'] = actions.delete_buffer
 			}
 		}
+	},
+	extensions = {
+		project = {
+			theme = 'dropdown',
+			preview = false
+		}
 	}
 }

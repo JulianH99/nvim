@@ -1,12 +1,12 @@
 {
   "eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSave": true,
-  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnType": false,
   "coc.preferences.formatOnSaveTimeout": 500,
-  "python.venvPath": "D:\\Envs",
   "python.formatting.provider": "autopep8",
   "pyright.enable": true,
   "python.linting.enable": true,
   "python.sortImports.args": [],
-  "pyright.inlayHints.variableTypes": false
+  "pyright.inlayHints.variableTypes": false,
+  "eslint.enable": true
 }
