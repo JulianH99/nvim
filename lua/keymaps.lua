@@ -6,18 +6,15 @@ map('n', '<C-j>', '<C-w>j', { noremap = true })
 map('n', '<C-k>', '<C-w>k', { noremap = true })
 map('n', '<C-l>', '<C-w>l', { noremap = true })
 
-map('n', '<leader>lg', ':Gtabedit :<cr>', { noremap = true, silent = true })
+map('n', '<leader>dfo', ':DiffviewOpen<cr>', { noremap = true, silent = true })
+map('n', '<leader>dfc', ':DiffviewClose<cr>', { noremap = true, silent = true })
+
+map('n', '<leader>dfh', ':DiffviewFileHistory<cr>', { noremap = true, silent = true })
 
 map('n', '<leader>bb', ':NvimTreeToggle<cr>', { noremap = true, silent =  true })
 
-map('n', '<leader>gpm', ':Git push origin main<cr>', { noremap = true })
-map('n', '<leader>gpp', ':Git pull origin main<cr>', { noremap = true })
-
 map('n', '<c-d>', '<c-d>zz', { noremap = true })
 map('n', '<c-u>', '<c-u>zz', { noremap = true })
-
-
-map('n', [[<c-\>]], [[<c-\>i]], { noremap = true })
 
 map({'n', 'v'}, '<leader>y', [["+y]], {})
 map('n', '<leader>Y', [["+Y]], {})
