@@ -28,6 +28,7 @@ require 'packer'.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-treesitter/nvim-treesitter'
 	use 'nvim-treesitter/nvim-treesitter-context'
+	use 'windwp/nvim-ts-autotag'
   use 'neovim/nvim-lspconfig'
   use {'neoclide/coc.nvim', branch = 'release'}
   use {'gpanders/editorconfig.nvim'}
@@ -75,7 +76,6 @@ require 'packer'.startup(function(use)
 	use {
 		"windwp/nvim-autopairs",
 	}
-	use 'tpope/vim-fugitive'
 	use {'stevearc/dressing.nvim'}
 
 	use {
@@ -112,6 +112,7 @@ require 'packer'.startup(function(use)
 	use "lukas-reineke/indent-blankline.nvim"
 	use "tpope/vim-surround"
 	use 'nanozuki/tabby.nvim'
+	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 end)
 
 
