@@ -13,11 +13,19 @@ require('lualine').setup {
 			{ 'mode', separator = { left = '', right = '' }, right_padding = 1,
 			fmt = function(str) return str:sub(1,1) end }
 		},
-		lualine_c = {
+		lualine_c = {}
+	},
+	winbar = {
+		lualine_a = {
 			{
 				'filename',
 				path = 1
 			}
+		}
+	},
+	inactive_winbar = {
+		lualine_a = {
+			'filename'
 		}
 	}
 }

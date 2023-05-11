@@ -22,25 +22,26 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+
 vim.cmd [[packadd packer.nvim]]
 
 require 'packer'.startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use 'nvim-treesitter/nvim-treesitter'
+	use 'wbthomason/packer.nvim'
+	use 'nvim-treesitter/nvim-treesitter'
 	use 'nvim-treesitter/nvim-treesitter-context'
 	use 'windwp/nvim-ts-autotag'
-  use 'neovim/nvim-lspconfig'
-  use {'neoclide/coc.nvim', branch = 'release'}
-  use {'gpanders/editorconfig.nvim'}
-  use {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
-    -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
+	use 'neovim/nvim-lspconfig'
+	use {'neoclide/coc.nvim', branch = 'release'}
+	use {'gpanders/editorconfig.nvim'}
 	use {
-    "ahmedkhalf/project.nvim",
+		'nvim-telescope/telescope.nvim', branch = '0.1.x',
+		-- or                            , branch = '0.1.x',
+		requires = { {'nvim-lua/plenary.nvim'} }
+	}
+	use {
+		"ahmedkhalf/project.nvim",
 		config = function()
-				require("project_nvim").setup {
+			require("project_nvim").setup {
 			}
 		end
 	}
@@ -63,11 +64,11 @@ require 'packer'.startup(function(use)
 	end}
 	use 'f-person/git-blame.nvim'
 	use {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-    end
-  }
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require('gitsigns').setup()
+		end
+	}
 	use 'mattn/emmet-vim'
 	use {
 		"startup-nvim/startup.nvim",
@@ -113,6 +114,7 @@ require 'packer'.startup(function(use)
 	use "tpope/vim-surround"
 	use 'nanozuki/tabby.nvim'
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+	use { 'echasnovski/mini.sessions', branch = 'stable' }
 end)
 
 
@@ -146,3 +148,9 @@ require('autopairconfig')
 
 
 vim.cmd('colorscheme kanagawa-dragon')
+
+-- put transparent background
+vim.cmd [[highlight Normal guibg=none]]
+vim.cmd [[highlight NonText guibg=none]]
+
+vim.o.guifont = "RecMonoDuotone NF:h13"
