@@ -22,6 +22,10 @@ vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+vim.opt.cursorline = true
+vim.opt.title = true
+vim.opt.titlestring = vim.loop.cwd()
+
 
 vim.cmd [[packadd packer.nvim]]
 
@@ -34,16 +38,12 @@ require 'packer'.startup(function(use)
 	use {'neoclide/coc.nvim', branch = 'release'}
 	use {'gpanders/editorconfig.nvim'}
 	use {
+		"aaditeynair/conduct.nvim"
+	}
+	use {
 		'nvim-telescope/telescope.nvim', branch = '0.1.x',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
-	}
-	use {
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("project_nvim").setup {
-			}
-		end
 	}
 	use {
 		'nvim-lualine/lualine.nvim',
@@ -53,14 +53,6 @@ require 'packer'.startup(function(use)
 		end
 	}
 	use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-		require("toggleterm").setup({
-			open_mapping = [[<c-\>]],
-			insert_mappings = true,
-			persist_size = true,
-			auto_scroll = true,
-			direction = 'horizontal',
-			shell = 'pwsh'
-		})
 	end}
 	use 'f-person/git-blame.nvim'
 	use {
@@ -153,4 +145,4 @@ vim.cmd('colorscheme kanagawa-dragon')
 vim.cmd [[highlight Normal guibg=none]]
 vim.cmd [[highlight NonText guibg=none]]
 
-vim.o.guifont = "RecMonoDuotone NF:h13"
+vim.o.guifont = "RecMonoDuotone NF:h12"

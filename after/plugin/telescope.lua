@@ -1,16 +1,9 @@
 local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
-local project = require('project_nvim')
 
-
-project.setup({
-	manual_mode = false,
-	patterns = { ".git" },
-	detection_methods = { "patterns" }
-})
-
-telescope.load_extension('projects')
+require('conduct').setup()
+telescope.load_extension("conduct")
 
 
 vim.keymap.set('n', '<leader>ff', function() 
@@ -22,10 +15,10 @@ vim.keymap.set('n', '<leader>ff', function()
 vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>fp', ':Telescope projects<cr>',  { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<leader>fr', builtin.git_files, { noremap =  true, silent = true })
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
+vim.keymap.set('n', '<leader>fp', '<cmd>Telescope conduct projects<cr>', { noremap = true, silent = true })
 
 telescope.setup {
 	theme = 'evil',
@@ -42,9 +35,6 @@ telescope.setup {
 		buffers = {
 			theme = 'dropdown',
 			preview = false,
-		},
-		projects = { 
-			theme = 'dropdown'
 		},
 		current_buffer_fuzzy_find = {
 			theme = 'dropdown',
@@ -67,12 +57,6 @@ telescope.setup {
 			i = {
 				['<c-d>'] = actions.delete_buffer
 			}
-		}
-	},
-	extensions = {
-		project = {
-			theme = 'dropdown',
-			preview = false
 		}
 	}
 }

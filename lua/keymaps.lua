@@ -1,6 +1,11 @@
 local map = vim.keymap.set
 map('n', '<leader>bb', ':NeoTreeShowToggle<cr>' ,{ noremap = true, silent = true })
 
+
+-- confort keymaps
+map('n', '<c-a>', 'gg<s-v>G', { noremap = true })
+map('t', '<ESC>', '<c-\\><c-n>', { noremap = true })
+
 -- window focusing
 map('n', '<C-h>', '<C-w>h', { noremap = true })
 map('n', '<C-j>', '<C-w>j', { noremap = true })
@@ -11,6 +16,7 @@ map('n', '<C-l>', '<C-w>l', { noremap = true })
 map('n', '<leader>dfo', ':DiffviewOpen<cr>', { noremap = true, silent = true })
 map('n', '<leader>dfc', ':DiffviewClose<cr>', { noremap = true, silent = true })
 map('n', '<leader>dfh', ':DiffviewFileHistory<cr>', { noremap = true, silent = true })
+
 
 map('n', '<leader>b', ':NvimTreeToggle<cr>', { noremap = true, silent =  true })
 

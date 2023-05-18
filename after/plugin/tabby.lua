@@ -1,4 +1,4 @@
-require('tabby.tabline').use_preset('active_wins_at_tail', {
+require('tabby.tabline').use_preset('tab_only', {
 	nerdfont = true,
 	buf_name = {
 		mode = "relative"
