@@ -2,9 +2,8 @@ local telescope = require('telescope')
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 
-require('conduct').setup()
-telescope.load_extension("conduct")
 
+telescope.load_extension('project')
 
 vim.keymap.set('n', '<leader>ff', function() 
 	builtin.find_files({ 	
@@ -18,7 +17,7 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<leader>fr', builtin.git_files, { noremap =  true, silent = true })
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
-vim.keymap.set('n', '<leader>fp', '<cmd>Telescope conduct projects<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>fp', "<cmd>lua require'telescope'.extensions.project.project{ theme = 'dropdown'}<cr>", { silent = true, noremap = true})
 
 telescope.setup {
 	theme = 'evil',
@@ -57,6 +56,11 @@ telescope.setup {
 			i = {
 				['<c-d>'] = actions.delete_buffer
 			}
+		}
+	},
+	extensions = {
+		project = {
+			theme = 'dropdown'
 		}
 	}
 }

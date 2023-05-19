@@ -8,6 +8,9 @@ require('nvim-tree').setup({
 	},
 	view = {
 		side = "right",
+	},
+	modified = {
+		enable = true
 	}
 })
 

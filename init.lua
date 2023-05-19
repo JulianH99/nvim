@@ -38,13 +38,11 @@ require 'packer'.startup(function(use)
 	use {'neoclide/coc.nvim', branch = 'release'}
 	use {'gpanders/editorconfig.nvim'}
 	use {
-		"aaditeynair/conduct.nvim"
-	}
-	use {
 		'nvim-telescope/telescope.nvim', branch = '0.1.x',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
+	use { "nvim-telescope/telescope-project.nvim" }
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
