@@ -67,7 +67,6 @@ require 'packer'.startup(function(use)
 	use {
 		"windwp/nvim-autopairs",
 	}
-	use {'stevearc/dressing.nvim'}
 
 	use {
 		"folke/trouble.nvim",
@@ -104,7 +103,7 @@ require 'packer'.startup(function(use)
 	use "tpope/vim-surround"
 	use 'nanozuki/tabby.nvim'
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
-	use { 'echasnovski/mini.sessions', branch = 'stable' }
+	use {'nvim-telescope/telescope-ui-select.nvim' }
 end)
 
 
@@ -140,7 +139,7 @@ require('autopairconfig')
 vim.cmd('colorscheme kanagawa-dragon')
 
 -- put transparent background
-vim.cmd [[highlight Normal guibg=none]]
-vim.cmd [[highlight NonText guibg=none]]
+-- vim.cmd [[highlight Normal guibg=none]]
+-- vim.cmd [[highlight NonText guibg=none]]
 
 vim.o.guifont = "RecMonoDuotone NF:h12"
