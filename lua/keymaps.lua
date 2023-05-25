@@ -27,7 +27,7 @@ map('n', '<c-u>', '<c-u>zz', { noremap = true })
 -- clipboard stuff
 map({'n', 'v'}, '<leader>y', [["+y]], {})
 map('n', '<leader>Y', [["+Y]], {})
-map({'n', 'i'}, '<leader>p', [["+p]], {})
+map('n', '<leader>p', [["+p]], {})
 map('c', '<c-v>', '<c-r>+', {})
 map({"n", "v"}, "<leader>d", [["_d]], {})
 
