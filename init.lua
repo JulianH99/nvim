@@ -113,15 +113,6 @@ require('keymaps')
 -- setup plugins
 --
 -- treesitter
-require'nvim-treesitter.configs'.setup {
-	ensure_installed = { 'typescript', 'javascript', 'html', 'css', 'json' },
-	highlight = {
-		enable = true
-	},
-	autotag = {
-    enable = true,
-	}
-}
 
 -- lspconfig
 --
