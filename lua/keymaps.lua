@@ -1,10 +1,9 @@
 local map = vim.keymap.set
-map('n', '<leader>bb', ':NeoTreeShowToggle<cr>' ,{ noremap = true, silent = true })
-
 
 -- confort keymaps
 map('n', '<c-a>', 'gg<s-v>G', { noremap = true })
 map('t', '<ESC>', '<c-\\><c-n>', { noremap = true })
+map('n', '<c-c>', '<esc>', { noremap = true })
 
 -- window focusing
 map('n', '<C-h>', '<C-w>h', { noremap = true })
@@ -36,5 +35,5 @@ map({"i", "n", "v"}, "<PageUp>", "<nop>")
 map({"i", "n", "v"}, "<PageDown>", "<nop>")
 
 -- easily change buffers
-map('n', '<tab>', '<cmd>bnext<cr>', {})
-map('n', '<s-tab>', '<cmd>bprevious<cr>', {})
+map('n', '<tab>', '<cmd>w<cr>', {})
+map('n', '<s-tab>', '<cmd>noa w<cr>', {})

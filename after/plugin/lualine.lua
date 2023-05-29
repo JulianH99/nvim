@@ -4,27 +4,31 @@ require('lualine').setup {
 		disabled_filetypes = { 
 			statusline = { 'packer', 'nvim-tree', 'undo-tree' } 
 		},
-		component_separators = '|',
-		section_separators = { left = '', right = '' },
+		component_separators = { left = "|", right = "|"},
+		section_separators = {left = "", right = ""},
 		globalstatus = true,
 	},
 	sections = {
 		lualine_a = {
-			{ 'mode', separator = { left = '', right = '' }, right_padding = 1,
-			fmt = function(str) return str:sub(1,1) end }
+			{ 'mode' }
 		},
 		lualine_c = {}
 	},
 	winbar = {
 		lualine_a = {
+			{'%=', separator = {left = "", right = ""} },
 			{
 				'filename',
-				path = 1
+				path = 1,
+				separator = { left = "", right = ""}
+			},
+			{
+				'%=', separator = { left = "", right = "" }
 			}
 		}
 	},
 	inactive_winbar = {
-		lualine_a = {
+		lualine_c = {
 			'filename'
 		}
 	}
