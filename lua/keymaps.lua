@@ -11,6 +11,7 @@ map('n', '<C-j>', '<C-w>j', { noremap = true })
 map('n', '<C-k>', '<C-w>k', { noremap = true })
 map('n', '<C-l>', '<C-w>l', { noremap = true })
 
+
 -- git diff view plugin keymaps
 map('n', '<leader>dfo', ':DiffviewOpen<cr>', { noremap = true, silent = true })
 map('n', '<leader>dfc', ':DiffviewClose<cr>', { noremap = true, silent = true })
@@ -29,11 +30,10 @@ map('n', '<leader>Y', [["+Y]], {})
 map('n', '<A-p>', [["+p]], {})
 map('c', '<c-v>', '<c-r>+', {})
 map({"n", "v"}, "<leader>d", [["_d]], {})
-
+map({"n", "v"}, "x", "x", {})
 -- i hate page up and down
 map({"i", "n", "v"}, "<PageUp>", "<nop>")
 map({"i", "n", "v"}, "<PageDown>", "<nop>")
 
 -- easily change buffers
-map('n', '<tab>', '<cmd>w<cr>', {})
 map('n', '<s-tab>', '<cmd>noa w<cr>', {})

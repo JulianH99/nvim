@@ -10,6 +10,8 @@
   "python.venvPath": "D:\\Envs",
   "pyright.inlayHints.variableTypes": false,
   "eslint.enable": true,
+  "typescript.suggest.completeFunctionCalls": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
   "suggest.completionItemKindLabels": {
     "method": "  ",
     "function": "  ",
@@ -36,5 +38,8 @@
     "constructor": "  ",
     "value": "  ",
     "enumMember": "  "
-  }
+  },
+  "docthis.authorName": "julian.barrios",
+  "docthis.includeAuthorTag": true,
+  "docthis.includeMemberOfOnClassMembers": false
 }

@@ -104,6 +104,12 @@ require 'packer'.startup(function(use)
 	use 'nanozuki/tabby.nvim'
 	use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 	use {'nvim-telescope/telescope-ui-select.nvim' }
+	use { "max397574/better-escape.nvim" }
+	use { 'echasnovski/mini.ai', branch = 'stable' }
+	use {
+    "nvim-telescope/telescope-file-browser.nvim",
+    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+	}
 end)
 
 

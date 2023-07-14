@@ -4,6 +4,8 @@ local actions = require('telescope.actions')
 
 
 telescope.load_extension('project')
+telescope.load_extension('file_browser')
+telescope.load_extension("ui-select")
 
 vim.keymap.set('n', '<leader>ff', function() 
 	builtin.find_files({ 	
@@ -18,6 +20,24 @@ vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<leader>fr', builtin.git_files, { noremap =  true, silent = true })
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 vim.keymap.set('n', '<leader>fp', "<cmd>lua require'telescope'.extensions.project.project{ theme = 'dropdown'}<cr>", { silent = true, noremap = true})
+
+
+-- file browser keymaps
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fv",
+  ":Telescope file_browser<CR>",
+  { noremap = true, silent = true }
+)
+
+-- open file_browser with the path of the current buffer
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>fz",
+  ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+  { noremap = true, silent = true }
+)
+
 
 telescope.setup {
 	theme = 'evil',
@@ -61,9 +81,11 @@ telescope.setup {
 	extensions = {
 		project = {
 			theme = 'dropdown'
+		},
+		file_browser = {
+			hijack_netrw = true
 		}
 	}
 }
 
 
-telescope.load_extension("ui-select")
