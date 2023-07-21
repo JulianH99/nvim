@@ -107,9 +107,13 @@ require 'packer'.startup(function(use)
 	use { "max397574/better-escape.nvim" }
 	use { 'echasnovski/mini.ai', branch = 'stable' }
 	use {
-    "nvim-telescope/telescope-file-browser.nvim",
-    requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+		"nvim-telescope/telescope-file-browser.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	}
+	use {
+		"folke/flash.nvim",
+	}
+	use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 end)
 
 
