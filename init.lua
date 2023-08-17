@@ -92,6 +92,7 @@ require 'packer'.startup(function(use)
 		end
 	}
 	use "rebelot/kanagawa.nvim"
+	use({ 'rose-pine/neovim', as = 'rose-pine' })
 	use {
 		'numToStr/Comment.nvim',
 		config = function()
@@ -137,7 +138,8 @@ require('autopairconfig')
 
 
 
-vim.cmd('colorscheme kanagawa-dragon')
+-- vim.cmd('colorscheme kanagawa-dragon')
+vim.cmd('colorscheme rose-pine')
 
 -- put transparent background
 -- vim.cmd [[highlight Normal guibg=none]]

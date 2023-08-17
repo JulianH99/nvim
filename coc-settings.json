@@ -12,6 +12,7 @@
   "eslint.enable": true,
   "typescript.suggest.completeFunctionCalls": false,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "suggest.completionItemKindLabels": {
     "method": "  ",
     "function": "  ",
