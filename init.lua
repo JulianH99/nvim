@@ -115,28 +115,17 @@ require 'packer'.startup(function(use)
 		"folke/flash.nvim",
 	}
 	use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+	use { "anuvyklack/windows.nvim",
+		requires = "anuvyklack/middleclass",
+		config = function()
+			require('windows').setup()
+		end
+	}
 end)
 
 
 
-require('keymaps')
-
--- setup plugins
---
--- treesitter
-
--- lspconfig
---
-local lspconfig = require('lspconfig')
-lspconfig.tsserver.setup {}
-
--- configure coc
-require('cocsettings')
-
--- configure autopair with coc
-require('autopairconfig')
-
-
+require('bat99/keymaps')
 
 -- vim.cmd('colorscheme kanagawa-dragon')
 vim.cmd('colorscheme rose-pine')
