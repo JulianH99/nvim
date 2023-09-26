@@ -110,5 +110,18 @@ return {
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 		}
+	},
+	{
+		"nvim-pack/nvim-spectre",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		event = "VeryLazy"
+
+	},
+	{ 
+		"brenoprata10/nvim-highlight-colors", 
+		event = "VeryLazy",
+		config = function()
+			require('nvim-highlight-colors').setup {}
+		end
 	}
 }
