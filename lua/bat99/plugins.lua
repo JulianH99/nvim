@@ -1,5 +1,10 @@
 return {
-	'nvim-treesitter/nvim-treesitter',
+	{
+		'nvim-treesitter/nvim-treesitter',
+		dependencies = {
+			'nvim-treesitter/nvim-treesitter-textobjects'
+		}
+	},
 	'nvim-treesitter/nvim-treesitter-context',
 	'windwp/nvim-ts-autotag',
 	'neovim/nvim-lspconfig',
@@ -9,7 +14,7 @@ return {
 		branch = '0.1.x',
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
-	{ "nvim-telescope/telescope-project.nvim" },
+	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 
@@ -18,10 +23,26 @@ return {
 			} 
 		}
 	},
-	{"akinsho/toggleterm.nvim", version = '*'},
 	'f-person/git-blame.nvim',
-	{'lewis6991/gitsigns.nvim', event = 'VeryLazy'},
-	{'mattn/emmet-vim', event = "VeryLazy"},
+	{
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require('gitsigns').setup()
+		end
+	},
+	{
+		'mattn/emmet-vim', 
+		event = "VeryLazy",
+		config = function()
+			vim.g.user_emmet_install_global = 0
+			vim.api.nvim_create_augroup("bat99", { clear = true })
+			vim.api.nvim_create_autocmd('FileType', {
+				command = "EmmetInstall",
+				pattern = {"html" , "css","gotmpl","liquid","gohtml"},
+				group = "bat99"
+			})
+		end
+	},
 	{
 		'glepnir/dashboard-nvim',
 		event = 'VimEnter',
@@ -74,7 +95,6 @@ return {
 			'nvim-tree/nvim-web-devicons', -- optional
 		}
 	},
-	{ 'rose-pine/neovim', name = 'rose-pine' },
 	{ 'sainnhe/gruvbox-material' },
 	{
 		'numToStr/Comment.nvim',
@@ -82,17 +102,19 @@ return {
 			require('Comment').setup()
 		end
 	},
-	"lukas-reineke/indent-blankline.nvim",
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	"tpope/vim-surround",
 	{'nanozuki/tabby.nvim', event = "VeryLazy"},
-	{ 'sindrets/diffview.nvim', dependencies = 'nvim-lua/plenary.nvim' },
 	'nvim-telescope/telescope-ui-select.nvim',
 	{ 'echasnovski/mini.ai', branch = 'stable' },
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	},
-	"folke/flash.nvim",
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy"
+	},
 	{ 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
 	{ "anuvyklack/windows.nvim",
 		dependencies = "anuvyklack/middleclass",
@@ -117,11 +139,17 @@ return {
 		event = "VeryLazy"
 
 	},
-	{ 
-		"brenoprata10/nvim-highlight-colors", 
-		event = "VeryLazy",
-		config = function()
-			require('nvim-highlight-colors').setup {}
-		end
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		}
+	},
+	{
+		'stevearc/dressing.nvim',
+		opts = {},
+		event = "VeryLazy"
 	}
 }

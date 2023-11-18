@@ -43,5 +43,6 @@
   "docthis.authorName": "julian.barrios",
   "docthis.includeAuthorTag": true,
   "docthis.includeMemberOfOnClassMembers": false,
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "snippets.ultisnips.pythonPrompt": false
 }

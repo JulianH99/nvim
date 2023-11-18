@@ -3,7 +3,6 @@ local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 
 
-telescope.load_extension('project')
 telescope.load_extension('file_browser')
 telescope.load_extension("ui-select")
 
@@ -20,7 +19,6 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<leader>fr', builtin.git_files, { noremap =  true, silent = true })
 vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
-vim.keymap.set('n', '<leader>fp', "<cmd>lua require'telescope'.extensions.project.project{ theme = 'dropdown'}<cr>", { silent = true, noremap = true})
 
 
 -- file browser keymaps
@@ -80,13 +78,10 @@ telescope.setup {
 		}
 	},
 	extensions = {
-		project = {
-			theme = 'dropdown'
-		},
 		file_browser = {
 			hijack_netrw = true
 		}
 	}
 }
 
-
+telescope.load_extension('fzf')
