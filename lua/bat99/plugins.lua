@@ -23,22 +23,29 @@ return {
 			} 
 		}
 	},
-	'f-person/git-blame.nvim',
+	{
+		'f-person/git-blame.nvim',
+		config = function()
+			vim.cmd [[GitBlameDisable]]
+		end,
+		event = "VeryLazy"
+	},
 	{
 		'lewis6991/gitsigns.nvim',
 		config = function()
 			require('gitsigns').setup()
-		end
+		end,
+		event = "VeryLazy"
 	},
 	{
 		'mattn/emmet-vim', 
 		event = "VeryLazy",
 		config = function()
-			vim.g.user_emmet_install_global = 0
+			vim.g.user_emmet_install_global = 1
 			vim.api.nvim_create_augroup("bat99", { clear = true })
 			vim.api.nvim_create_autocmd('FileType', {
 				command = "EmmetInstall",
-				pattern = {"html" , "css","gotmpl","liquid","gohtml"},
+				pattern = {"html", "css", "gotmpl", "liquid", "gohtml"},
 				group = "bat99"
 			})
 		end
