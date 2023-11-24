@@ -3,7 +3,26 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter-textobjects'
-		}
+		},
+		config = function()
+
+			require('nvim-tree').setup({
+				respect_buf_cwd = true,
+				sync_root_with_cwd = true,
+				filters = {
+					dotfiles = false,
+					custom = { "__pycache__" },
+					exclude = {".env"}
+				},
+				view = {
+					side = "right",
+				},
+				modified = {
+					enable = true
+				}
+			})
+
+		end
 	},
 	'nvim-treesitter/nvim-treesitter-context',
 	'windwp/nvim-ts-autotag',
@@ -28,18 +47,18 @@ return {
 		config = function()
 			vim.cmd [[GitBlameDisable]]
 		end,
-		event = "VeryLazy"
+		cmd = "GitBlameEnable"
 	},
 	{
 		'lewis6991/gitsigns.nvim',
 		config = function()
 			require('gitsigns').setup()
 		end,
-		event = "VeryLazy"
+		event = "BufReadPre"
 	},
 	{
 		'mattn/emmet-vim', 
-		event = "VeryLazy",
+		event = "BufReadPre",
 		config = function()
 			vim.g.user_emmet_install_global = 1
 			vim.api.nvim_create_augroup("bat99", { clear = true })
@@ -51,50 +70,71 @@ return {
 		end
 	},
 	{
-		'glepnir/dashboard-nvim',
-		event = 'VimEnter',
-		config = function()
-			require('dashboard').setup {
-				theme = "doom",
-				config = {
-					header = {
-						"",
-						"",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⡟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⡇⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣧⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠿⠟⠛⠿⣿⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⡆⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠳⠄⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣢⣴⣦⣴⣪⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⡿⠿⠟⠋⠁⠒⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠈⠙⠻⠿⠿⣿⣿⣿⣿",
-						"⣿⠟⠉⠀⠀⠀⠀⠀⠀⢀⡰⣿⣿⣿⣿⣿⣿⣿⣿⠿⢿⣦⡀⠀⠀⠀⠀⠈⠻⣿",
-						"⣏⠀⠀⢀⣤⠆⠀⠀⠀⠤⢚⢩⣽⣿⣿⣿⣿⣿⣯⢅⡂⠈⠉⠀⠠⣀⡀⠀⠰⣹",
-						"⣿⢀⣴⣿⣣⡄⠀⢀⡴⠊⠁⠀⠙⠿⠋⠉⠿⠛⠁⠀⠈⠢⡀⠀⠀⣈⣻⣷⣦⣿",
-						"⣿⣿⣿⣿⣿⣾⣴⣯⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣬⣦⣼⣿⣿⣿⣿⣿",
-						"",
-						""
-					},
-					center = {
-						{
-
-							desc = "Projects",
-							desc_hl = "string",
-							key = "p",
-							keymap = "SPC f p",
-							key_hl = "number"
-						}
-					}
-				}
-			}
-		end,
-		dependencies = { {'nvim-tree/nvim-web-devicons'}}
+		'echasnovski/mini.starter', 
+		event = "VimEnter",
+		version = false,
+		config = function ()
+			require('mini.starter').setup({
+				header = [[ 
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⡟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⡇⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣧⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠿⠟⠛⠿⣿⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⡆⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠳⠄⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣢⣴⣦⣴⣪⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+				⣿⣿⣿⣿⡿⠿⠟⠋⠁⠒⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣄⠈⠙⠻⠿⠿⣿⣿⣿⣿
+				⣿⠟⠉⠀⠀⠀⠀⠀⠀⢀⡰⣿⣿⣿⣿⣿⣿⣿⣿⠿⢿⣦⡀⠀⠀⠀⠀⠈⠻⣿
+				⣏⠀⠀⢀⣤⠆⠀⠀⠀⠤⢚⢩⣽⣿⣿⣿⣿⣿⣯⢅⡂⠈⠉⠀⠠⣀⡀⠀⠰⣹
+				⣿⢀⣴⣿⣣⡄⠀⢀⡴⠊⠁⠀⠙⠿⠋⠉⠿⠛⠁⠀⠈⠢⡀⠀⠀⣈⣻⣷⣦⣿
+				⣿⣿⣿⣿⣿⣾⣴⣯⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣬⣦⣼⣿⣿⣿⣿⣿
+				]]
+			})
+		end
 	},
-	"windwp/nvim-autopairs",
-	{"mbbill/undotree", event = "VeryLazy"},
+	{
+		"windwp/nvim-autopairs", 
+		event = {"InsertEnter"},
+		config = function()
+
+			local remap = vim.api.nvim_set_keymap
+			local npairs = require('nvim-autopairs')
+			npairs.setup({map_cr=false, touch = true})
+
+			-- skip it, if you use another global object
+			_G.MUtils= {}
+
+			-- old version
+			-- MUtils.completion_confirm=function()
+			-- if vim.fn["coc#pum#visible"]() ~= 0 then
+			-- return vim.fn["coc#_select_confirm"]()
+			-- else
+			-- return npairs.autopairs_cr()
+			-- end
+			-- end
+
+			-- new version for custom pum
+			MUtils.completion_confirm=function()
+				if vim.fn["coc#pum#visible"]() ~= 0  then
+					return vim.fn["coc#pum#confirm"]()
+				else
+					return npairs.autopairs_cr()
+				end
+			end
+
+			remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+		end
+	},
+	{
+		"mbbill/undotree", 
+		keys = {{ "<leader>u" }},
+		config = function()
+			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+		end
+	},
 	'nvim-tree/nvim-web-devicons',
 	{
 		'nvim-tree/nvim-tree.lua',
@@ -102,30 +142,96 @@ return {
 			'nvim-tree/nvim-web-devicons', -- optional
 		}
 	},
-	{ 'sainnhe/gruvbox-material' },
+	{ 
+		'sainnhe/gruvbox-material',
+		config = function ()
+			vim.g.gruvbox_material_enable_bold = 1
+			vim.g.gruvbox_material_enable_italic = 1
+			vim.cmd('colorscheme gruvbox-material')
+		end
+	},
 	{
 		'numToStr/Comment.nvim',
+		event = {"BufReadPre", "BufRead"},
 		config = function()
 			require('Comment').setup()
 		end
 	},
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-	"tpope/vim-surround",
-	{'nanozuki/tabby.nvim', event = "VeryLazy"},
+	{ 
+		"lukas-reineke/indent-blankline.nvim", 
+		main = "ibl", 
+		opts = {}, 
+		event = "BufReadPre",
+		config = function()
+			local ok, blankline = pcall(require, 'ibl')
+			if ok then
+				blankline.setup { }
+			end
+		end
+	},
+	{ "tpope/vim-surround", event = "BufReadPre"},
+	{
+		'nanozuki/tabby.nvim', 
+		event = "TabEnter",
+		config = function()
+
+			require('tabby.tabline').use_preset('tab_only', {
+				nerdfont = true,
+				buf_name = {
+					mode = "relative"
+				}
+			})
+
+		end
+	},
 	'nvim-telescope/telescope-ui-select.nvim',
-	{ 'echasnovski/mini.ai', branch = 'stable' },
+	{ 'echasnovski/mini.ai', branch = 'stable', config = true, event = "BufReadPre" },
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	},
 	{
 		"folke/flash.nvim",
-		event = "VeryLazy"
+		event = "BufReadPre",
+		config = function() 
+
+			local flash = require('flash')
+
+			local set = vim.keymap.set
+
+			set({ "n", "x", "o" }, "<cr>", function() flash.jump({
+				search = {
+					mode = function(str)
+						return "\\<" .. str
+					end,
+				},
+			}) end, {})
+			set("c", "<c-s>", function() flash.toggle() end, {})
+
+		end
 	},
-	{ 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
+	{ 
+		'kevinhwang91/nvim-ufo', 
+		dependencies = 'kevinhwang91/promise-async', 
+		event = "BufReadPre",
+		config = function() 
+
+			vim.o.foldcolumn = '1' -- '0' is not bad
+			vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+			vim.o.foldlevelstart = 99
+			vim.o.foldenable = true
+
+			-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+			vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+			vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+
+			require('ufo').setup()
+		end
+	},
 	{ "anuvyklack/windows.nvim",
 		dependencies = "anuvyklack/middleclass",
-		event = "VeryLazy",
+		event = "BufReadPre",
 		config = function()
 			require('windows').setup()
 		end
@@ -133,7 +239,7 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		event = "VeryLazy",
+		event = "BufReadPre",
 		opts = {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
@@ -143,7 +249,26 @@ return {
 	{
 		"nvim-pack/nvim-spectre",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		event = "VeryLazy"
+		event = "VeryLazy",
+		keys = {
+			{ "<leader>es" }
+		},
+		config = function()
+			local keymap = vim.keymap
+
+			keymap.set('n', '<leader>es', '<cmd>lua require("spectre").toggle()<CR>', {
+				desc = "Toggle Spectre"
+			})
+			keymap.set('n', '<leader>esw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+				desc = "Search current word"
+			})
+			keymap.set('v', '<leader>esw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+				desc = "Search current word"
+			})
+			keymap.set('n', '<leader>esc', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+				desc = "Search on current file"
+			})
+		end
 
 	},
 	{
@@ -152,7 +277,8 @@ return {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
-		}
+		},
+		cmd = "ZenMode"
 	},
 	{
 		'stevearc/dressing.nvim',
