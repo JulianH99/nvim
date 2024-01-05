@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.cmd('set expandtab')
 vim.cmd('set tabstop=2')
 vim.cmd('set shiftwidth=2')
 vim.cmd('set textwidth=80')
@@ -25,3 +26,5 @@ vim.opt.smartcase = true
 vim.opt.cursorline = true
 vim.opt.title = true
 vim.opt.titlestring = vim.loop.cwd()
+
+vim.api.nvim_create_user_command("W", function() vim.cmd[[noa w]] end, {})

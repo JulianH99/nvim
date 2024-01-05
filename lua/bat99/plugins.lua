@@ -3,26 +3,7 @@ return {
 		'nvim-treesitter/nvim-treesitter',
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter-textobjects'
-		},
-		config = function()
-
-			require('nvim-tree').setup({
-				respect_buf_cwd = true,
-				sync_root_with_cwd = true,
-				filters = {
-					dotfiles = false,
-					custom = { "__pycache__" },
-					exclude = {".env"}
-				},
-				view = {
-					side = "right",
-				},
-				modified = {
-					enable = true
-				}
-			})
-
-		end
+		}
 	},
 	'nvim-treesitter/nvim-treesitter-context',
 	'windwp/nvim-ts-autotag',
@@ -96,39 +77,6 @@ return {
 		end
 	},
 	{
-		"windwp/nvim-autopairs", 
-		event = {"InsertEnter"},
-		config = function()
-
-			local remap = vim.api.nvim_set_keymap
-			local npairs = require('nvim-autopairs')
-			npairs.setup({map_cr=false, touch = true})
-
-			-- skip it, if you use another global object
-			_G.MUtils= {}
-
-			-- old version
-			-- MUtils.completion_confirm=function()
-			-- if vim.fn["coc#pum#visible"]() ~= 0 then
-			-- return vim.fn["coc#_select_confirm"]()
-			-- else
-			-- return npairs.autopairs_cr()
-			-- end
-			-- end
-
-			-- new version for custom pum
-			MUtils.completion_confirm=function()
-				if vim.fn["coc#pum#visible"]() ~= 0  then
-					return vim.fn["coc#pum#confirm"]()
-				else
-					return npairs.autopairs_cr()
-				end
-			end
-
-			remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
-		end
-	},
-	{
 		"mbbill/undotree", 
 		keys = {{ "<leader>u" }},
 		config = function()
@@ -136,12 +84,6 @@ return {
 		end
 	},
 	'nvim-tree/nvim-web-devicons',
-	{
-		'nvim-tree/nvim-tree.lua',
-		dependencies = {
-			'nvim-tree/nvim-web-devicons', -- optional
-		}
-	},
 	{ 
 		'sainnhe/gruvbox-material',
 		config = function ()
@@ -249,9 +191,8 @@ return {
 	{
 		"nvim-pack/nvim-spectre",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		event = "VeryLazy",
 		keys = {
-			{ "<leader>es" }
+			{ "<leader>es" }, { "<leader>esw" }
 		},
 		config = function()
 			local keymap = vim.keymap
@@ -284,5 +225,12 @@ return {
 		'stevearc/dressing.nvim',
 		opts = {},
 		event = "VeryLazy"
-	}
+	}, 
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    cmd = 'Oil',
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  }
 }

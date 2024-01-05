@@ -43,26 +43,23 @@ telescope.setup {
 
 	pickers = {
 		live_grep = {
-			theme = 'dropdown',
-			preview = true
+			theme = 'ivy',
 		},
 		find_files = {
-			theme = 'dropdown',
+			theme = 'ivy',
 			preview = false
 		},
 		buffers = {
-			theme = 'dropdown',
-			preview = false,
+			theme = 'ivy',
 		},
 		current_buffer_fuzzy_find = {
-			theme = 'dropdown',
-			preview = true
+			theme = 'ivy',
 		},
 		git_branches = {
-			theme = 'dropdown'
+			theme = 'ivy'
 		},
 		git_files = {
-			theme = 'dropdown',
+			theme = 'ivy',
 			show_untracked = true,
 		}
 	},
