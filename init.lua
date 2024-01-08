@@ -14,8 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("bat99/set")
 
-require("lazy").setup("bat99/plugins")
-
+require("lazy").setup({{ import = "bat99/plugins" }, { import = "bat99/plugins/lsp" }})
 require('bat99/keymaps')
 
 -- vim.cmd('colorscheme kanagawa-dragon')
@@ -28,4 +27,3 @@ vim.cmd('colorscheme gruvbox-material')
 -- vim.cmd [[highlight Normal guibg=none]]
 -- vim.cmd [[highlight NonText guibg=none]]
 
-vim.o.guifont = "RecMonoDuotone NF:h12"
