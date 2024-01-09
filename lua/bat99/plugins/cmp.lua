@@ -24,7 +24,7 @@ return {
 			formatting = {
 				format = lspkind.cmp_format({
 					mode = "symbol",
-					maxwidth = 50,
+					maxwidth = 80,
 					ellipisis_char = "...",
 				}),
 			},

@@ -4,12 +4,15 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 		"hrsh7th/cmp-nvim-lsp",
+		"folke/neodev.nvim",
 	},
 	config = function()
 		local mason = require("mason")
 		local masonlsp = require("mason-lspconfig")
 		local lsp = require("lspconfig")
 		local cmplsp = require("cmp_nvim_lsp")
+
+		local neodev = require("neodev")
 
 		-- TODO: set all telescope pickers with the ivy theme
 
@@ -74,6 +77,7 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		neodev.setup({})
 		masonlsp.setup({
 			ensure_installed = {
 				"tsserver",
