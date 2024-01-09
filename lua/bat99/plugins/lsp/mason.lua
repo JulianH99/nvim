@@ -125,6 +125,7 @@ return {
 							"svelte",
 							"liquid",
 							"templ",
+							"astro",
 						},
 					})
 				end,

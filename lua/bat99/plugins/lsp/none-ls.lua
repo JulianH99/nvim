@@ -9,7 +9,9 @@ return {
 			sources = {
 				nls.builtins.formatting.stylua,
 				nls.builtins.formatting.autopep8,
-				nls.builtins.formatting.prettier,
+				nls.builtins.formatting.prettier.with({
+					filetypes = { "astro" },
+				}),
 				nls.builtins.formatting.gofmt,
 				nls.builtins.formatting.goimports,
 
