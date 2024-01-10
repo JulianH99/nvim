@@ -10,7 +10,16 @@ return {
 				nls.builtins.formatting.stylua,
 				nls.builtins.formatting.autopep8,
 				nls.builtins.formatting.prettier.with({
-					filetypes = { "astro" },
+					filetypes = {
+						"astro",
+						"javascript",
+						"typescript",
+						"css",
+						"scss",
+						"sass",
+						"javascriptreact",
+						"typescriptreact",
+					},
 				}),
 				nls.builtins.formatting.gofmt,
 				nls.builtins.formatting.goimports,
