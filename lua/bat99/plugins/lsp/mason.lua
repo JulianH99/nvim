@@ -87,6 +87,7 @@ return {
 				"emmet_ls",
 				"gopls",
 				"theme_check",
+				"templ",
 			},
 			automatic_installation = true,
 			handlers = {
@@ -94,6 +95,25 @@ return {
 					lsp[server_name].setup({
 						on_attach = on_attach,
 						capabilities = capabilities,
+					})
+				end,
+				["html"] = function()
+					lsp.html.setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+						filetypes = {
+							"html",
+							"typescriptreact",
+							"javascriptreact",
+							"css",
+							"sass",
+							"scss",
+							"less",
+							"svelte",
+							"liquid",
+							"templ",
+							"astro",
+						},
 					})
 				end,
 				["lua_ls"] = function()
@@ -132,6 +152,7 @@ return {
 			},
 		})
 
+		vim.filetype.add({ extension = { templ = "templ" } })
 		-- set diagnostic keymab
 	end,
 }
