@@ -71,7 +71,7 @@ return {
 
 		mason.setup()
 
-		-- local signs = { Error = "2", Warn = " ", Hint = "󰠠 ", Info = " " }
+		-- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 		-- for type, icon in pairs(signs) do
 		-- 	local hl = "DiagnosticSign" .. type
 		-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -147,6 +147,13 @@ return {
 							"templ",
 							"astro",
 						},
+					})
+				end,
+				["templ"] = function()
+					lsp.templ.setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+						filetypes = { "templ" },
 					})
 				end,
 			},
