@@ -76,6 +76,21 @@ return {
 		-- 	local hl = "DiagnosticSign" .. type
 		-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		-- end
+		--
+		local html_file_types = {
+			"html",
+			"typescriptreact",
+			"javascriptreact",
+			"css",
+			"sass",
+			"scss",
+			"less",
+			"svelte",
+			"liquid",
+			"templ",
+			"astro",
+			"htmldjango",
+		}
 
 		neodev.setup({})
 		masonlsp.setup({
@@ -88,7 +103,12 @@ return {
 				"gopls",
 				"theme_check",
 				"templ",
+				"astro",
+				"pyright",
+				"tailwindcss",
+				"jsonls",
 			},
+
 			automatic_installation = true,
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -101,19 +121,7 @@ return {
 					lsp.html.setup({
 						on_attach = on_attach,
 						capabilities = capabilities,
-						filetypes = {
-							"html",
-							"typescriptreact",
-							"javascriptreact",
-							"css",
-							"sass",
-							"scss",
-							"less",
-							"svelte",
-							"liquid",
-							"templ",
-							"astro",
-						},
+						filetypes = html_file_types,
 					})
 				end,
 				["lua_ls"] = function()
@@ -134,19 +142,7 @@ return {
 					lsp["emmet_ls"].setup({
 						capabilities = capabilities,
 						on_attach = on_attach,
-						filetypes = {
-							"html",
-							"typescriptreact",
-							"javascriptreact",
-							"css",
-							"sass",
-							"scss",
-							"less",
-							"svelte",
-							"liquid",
-							"templ",
-							"astro",
-						},
+						filetypes = html_file_types,
 					})
 				end,
 				["templ"] = function()
@@ -154,6 +150,13 @@ return {
 						on_attach = on_attach,
 						capabilities = capabilities,
 						filetypes = { "templ" },
+					})
+				end,
+				["tailwindcss"] = function()
+					lsp.tailwindcss.setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+						filetypes = html_file_types,
 					})
 				end,
 			},

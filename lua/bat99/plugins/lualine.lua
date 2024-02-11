@@ -19,6 +19,11 @@ return {
 					{ "mode", separator = { left = "", right = "" } },
 				},
 				lualine_b = {
+					{
+						function()
+							return vim.fn.fnamemodify(vim.loop.cwd(), ":t")
+						end,
+					},
 					{ "filetype", separator = {}, icon_only = true, icon = { align = "right" } },
 					{ "filename", path = 1, separator = { right = "" } },
 				},
