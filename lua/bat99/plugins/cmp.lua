@@ -52,6 +52,9 @@ return {
 				{ name = "buffer" },
 				{ name = "path" },
 			}),
+			experimental = {
+				ghost_text = true,
+			},
 		})
 	end,
 }
