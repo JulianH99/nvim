@@ -6,14 +6,12 @@ return {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-telescope/telescope-ui-select.nvim",
-		"nvim-telescope/telescope-file-browser.nvim", -- TODO: ckeck if this is still useful after using oil.nvim
 	},
 	config = function()
 		local telescope = require("telescope")
 		local builtin = require("telescope.builtin")
 		local actions = require("telescope.actions")
 
-		telescope.load_extension("file_browser")
 		telescope.load_extension("ui-select")
 
 		vim.keymap.set("n", "<leader>ff", function()
@@ -29,17 +27,6 @@ return {
 		vim.keymap.set("n", "<leader>fc", builtin.current_buffer_fuzzy_find, {})
 		vim.keymap.set("n", "<leader>fr", builtin.git_files, { noremap = true, silent = true })
 		vim.keymap.set("n", "<leader>gb", builtin.git_branches, {})
-
-		-- file browser keymaps
-		vim.api.nvim_set_keymap("n", "<space>fv", ":Telescope file_browser<CR>", { noremap = true, silent = true })
-
-		-- open file_browser with the path of the current buffer
-		vim.api.nvim_set_keymap(
-			"n",
-			"<space>fz",
-			":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-			{ noremap = true, silent = true }
-		)
 
 		telescope.setup({
 			theme = "evil",
@@ -78,11 +65,6 @@ return {
 					i = {
 						["<c-d>"] = actions.delete_buffer,
 					},
-				},
-			},
-			extensions = {
-				file_browser = {
-					hijack_netrw = true,
 				},
 			},
 		})
