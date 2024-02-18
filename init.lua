@@ -11,12 +11,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("bat99/set")
+require("bat99.set")
 
 require("lazy").setup({ { import = "bat99/plugins" }, { import = "bat99/plugins/lsp" } })
-require("bat99/keymaps")
+require("bat99.keymaps")
+require("bat99.commands")
 
 vim.cmd("colorscheme kanagawa-dragon")
+
+require("bat99.highlight")
 -- vim.g.gruvbox_material_background = 'soft'
 -- vim.g.gruvbox_material_enable_bold = 1
 -- vim.g.gruvbox_material_enable_italic = 1
