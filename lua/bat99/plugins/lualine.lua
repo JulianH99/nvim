@@ -71,12 +71,15 @@ left({
 	-- "mode",
 	function()
 		local modes = {
-
 			n = "NORM",
 			i = "INS",
 			v = "VIS",
+			vs = "VIB",
+			["\22"] = "VIB",
+			["\22s"] = "VIB",
 			[""] = "NONE",
 			V = "VIL",
+			Vs = "VIB",
 			c = "CMD",
 
 			no = "OP",
@@ -97,13 +100,15 @@ left({
 			["!"] = "SHELL",
 			t = "TERM",
 		}
-		return modes[vim.fn.mode()]
+		return modes[vim.fn.mode()] or "NONE"
 	end,
 	color = function()
 		local mode_color = {
 			n = colors.green,
 			i = colors.blue,
 			v = colors.red,
+			["\22"] = colors.red,
+			["\22s"] = colors.red,
 			[""] = colors.green,
 			V = colors.red,
 			c = colors.yellow,
@@ -127,7 +132,7 @@ left({
 			t = colors.fg,
 		}
 
-		return { fg = mode_color[vim.fn.mode()], gui = "bold" }
+		return { fg = mode_color[vim.fn.mode()] or colors.red, gui = "bold" }
 	end,
 })
 
