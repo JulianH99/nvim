@@ -14,38 +14,10 @@ local colors = {
 	aqua = "#8ec97c",
 }
 
-local old_config = {
-	options = {
-		component_separators = { left = "|", right = "|" },
-		section_separators = { left = "", right = "" },
-	},
-	sections = {
-		lualine_a = {
-			{ "mode", separator = { left = "", right = "" } },
-		},
-		lualine_b = {
-			{
-				function()
-					return vim.fn.fnamemodify(vim.loop.cwd(), ":t")
-				end,
-			},
-			{ "filetype", separator = {}, icon_only = true, icon = { align = "right" } },
-			{ "filename", path = 1, separator = { right = "" } },
-		},
-		lualine_c = {
-			{ "diff", separator = { right = "" } },
-			{ "diagnostics" },
-		},
-		lualine_x = {
-			{ "encoding" },
-			{ "fileformat" },
-			{ "searchcount" },
-			{ "selectioncount" },
-		},
-		lualine_y = {
-			{ "branch", separator = { left = "", right = "" } },
-		},
-	},
+local conditions = {
+	hide_in_width = function()
+		return vim.fn.winwidth(0) > 90
+	end,
 }
 
 local config = {
@@ -120,7 +92,7 @@ left({
 
 			cv = "VEX",
 			r = "PROMPT",
-			rm = "MPROMT",
+			rm = "MORE",
 			["r?"] = "CONFR",
 			["!"] = "SHELL",
 			t = "TERM",
@@ -167,6 +139,7 @@ left({
 	end,
 	padding = 0,
 	color = { fg = colors.aqua },
+	cond = conditions.hide_in_width,
 })
 
 left({ "filename", path = 1, padding = 1, color = { fg = colors.blue } })
@@ -188,6 +161,7 @@ left({
 		removed = { fg = colors.red },
 	},
 	symbols = { added = "+", modified = "~", removed = "-" },
+	cond = conditions.hide_in_width,
 })
 
 -- right components
@@ -209,12 +183,14 @@ right({
 		return "[" .. vim.fn.fnamemodify(vim.loop.cwd(), ":t") .. "]"
 	end,
 	color = { fg = colors.blue, gui = "bold" },
+	cond = conditions.hide_in_width,
 })
 
 right({
 	"o:encoding",
 	fmt = string.upper,
 	color = { fg = colors.green },
+	cond = conditions.hide_in_width,
 })
 
 right({
