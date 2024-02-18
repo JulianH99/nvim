@@ -90,6 +90,7 @@ return {
 			"templ",
 			"astro",
 			"htmldjango",
+			"phpactor",
 		}
 
 		neodev.setup({})

@@ -24,9 +24,12 @@ return {
 				nls.builtins.formatting.gofmt,
 				nls.builtins.formatting.goimports,
 				nls.builtins.formatting.djlint,
+				nls.builtins.formatting.phpcsfixer,
 
 				nls.builtins.diagnostics.eslint_d,
 				nls.builtins.diagnostics.djlint,
+				nls.builtins.diagnostics.phpcs,
+				nls.builtins.diagnostics.phpstan,
 
 				nls.builtins.code_actions.refactoring,
 				nls.builtins.code_actions.eslint_d,
