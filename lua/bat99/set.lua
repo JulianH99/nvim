@@ -23,7 +23,14 @@ vim.opt.termguicolors = true
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+
+local home = os.getenv("USER_PROFILE")
+
+if vim.loop.os_uname().sysname == "Linux" then
+	home = os.getenv("HOME")
+end
+
+vim.opt.undodir = home .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
