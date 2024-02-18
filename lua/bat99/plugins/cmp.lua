@@ -18,7 +18,7 @@ return {
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
 
-		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_lua").lazy_load({ paths = { "./snippets" } })
 
 		cmp.setup({
 			formatting = {
@@ -44,6 +44,12 @@ return {
 				["<C-space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<c-n>"] = cmp.mapping(function()
+					luasnip.jump(1)
+				end, { "i", "s" }),
+				["<c-p>"] = cmp.mapping(function()
+					luasnip.jump(-1)
+				end, { "i", "s" }),
 			}),
 			-- configure sources
 			sources = cmp.config.sources({
