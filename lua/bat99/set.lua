@@ -24,7 +24,7 @@ vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 
-local home = os.getenv("USER_PROFILE")
+local home = os.getenv("USERPROFILE")
 
 if vim.loop.os_uname().sysname == "Linux" then
 	home = os.getenv("HOME")
