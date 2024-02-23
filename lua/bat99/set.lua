@@ -27,7 +27,7 @@ vim.opt.backup = false
 local home = os.getenv("USERPROFILE")
 
 if vim.loop.os_uname().sysname == "Linux" then
-	home = os.getenv("HOME")
+  home = os.getenv("HOME")
 end
 
 vim.opt.undodir = home .. "/.vim/undodir"
@@ -43,7 +43,10 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.opt.listchars:append({
-	eol = "↵",
-	tab = "  ",
+  eol = "↵",
+  tab = "  ",
 })
+vim.opt.fillchars = { eob = " " }
 vim.opt.list = true
+vim.opt.showmode = false
+vim.opt.signcolumn = "yes"
