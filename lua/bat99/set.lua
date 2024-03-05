@@ -3,7 +3,6 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.cmd("set textwidth=80")
-vim.cmd("set foldmethod=syntax")
 
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -50,3 +49,9 @@ vim.opt.fillchars = { eob = " " }
 vim.opt.list = true
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
+
+vim.opt.foldmethod = "manual"
+vim.opt.foldcolumn = "1" -- '0' is not bad
+vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = false

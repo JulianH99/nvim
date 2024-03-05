@@ -5,6 +5,7 @@ return {
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp",
     "folke/neodev.nvim",
+    -- "kevinhwang91/nvim-ufo",
   },
   config = function()
     local mason = require("mason")
@@ -67,7 +68,9 @@ return {
     end
 
     -- setup capabilities
-    local capabilities = cmplsp.default_capabilities()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+    capabilities = vim.tbl_deep_extend("force", capabilities, cmplsp.default_capabilities())
 
     mason.setup()
 
