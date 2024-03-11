@@ -23,7 +23,7 @@ return {
     cmp.setup({
       formatting = {
         format = lspkind.cmp_format({
-          mode = "symbol",
+          mode = "text",
           maxwidth = 80,
           ellipisis_char = "...",
         }),
@@ -55,8 +55,8 @@ return {
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer" },
         { name = "path" },
+        { name = "buffer" },
       }),
       experimental = {
         ghost_text = true,

@@ -111,6 +111,8 @@ return {
         "pyright",
         "tailwindcss",
         "jsonls",
+        "eslint",
+        "ruff_lsp",
       },
 
       automatic_installation = true,
