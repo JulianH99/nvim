@@ -18,14 +18,10 @@ require("bat99.keymaps")
 require("bat99.commands")
 
 -- vim.cmd("colorscheme kanagawa-dragon")
-vim.cmd("colorscheme hybrid")
+-- vim.cmd("colorscheme evergarden")
 
 require("bat99.highlight")
--- vim.g.gruvbox_material_background = 'soft'
--- vim.g.gruvbox_material_enable_bold = 1
--- vim.g.gruvbox_material_enable_italic = 1
--- vim.cmd('colorscheme gruvbox-material')
 
 -- put transparent background
--- vim.cmd [[highlight Normal guibg=none]]
--- vim.cmd [[highlight NonText guibg=none]]
+-- vim.cmd([[highlight Normal guibg=none]])
+-- vim.cmd([[highlight NonText guibg=none]])

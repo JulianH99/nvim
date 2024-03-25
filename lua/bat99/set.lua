@@ -1,4 +1,12 @@
+local home = os.getenv("USERPROFILE")
+
+if vim.loop.os_uname().sysname == "Linux" then
+  home = os.getenv("HOME")
+end
+
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
@@ -17,17 +25,14 @@ vim.opt.scrolloff = 8
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 
-local home = os.getenv("USERPROFILE")
-
-if vim.loop.os_uname().sysname == "Linux" then
-  home = os.getenv("HOME")
-end
+vim.opt.inccommand = "split"
 
 vim.opt.undodir = home .. "/.vim/undodir"
 vim.opt.undofile = true
@@ -43,8 +48,11 @@ vim.opt.splitright = true
 
 vim.opt.listchars:append({
   eol = "↵",
-  tab = "  ",
+  tab = "» ",
+  trail = "·",
+  nbsp = "␣",
 })
+
 vim.opt.fillchars = { eob = " " }
 vim.opt.list = true
 vim.opt.showmode = false
