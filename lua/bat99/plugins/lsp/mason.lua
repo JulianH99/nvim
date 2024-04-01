@@ -15,8 +15,6 @@ return {
 
     local neodev = require("neodev")
 
-    -- TODO: set all telescope pickers with the ivy theme
-
     local keymap = vim.keymap -- for conciseness
 
     local opts = { noremap = true, silent = true }
@@ -70,6 +68,8 @@ return {
     -- setup capabilities
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+    vim.filetype.add({ extension = { templ = "templ" } })
+
     capabilities = vim.tbl_deep_extend("force", capabilities, cmplsp.default_capabilities())
 
     mason.setup()
@@ -104,7 +104,6 @@ return {
         "templ",
         "astro",
         "pyright",
-        "tailwindcss",
         "jsonls",
         "eslint",
         "ruff_lsp",
@@ -153,17 +152,9 @@ return {
             filetypes = { "templ" },
           })
         end,
-        ["tailwindcss"] = function()
-          lsp.tailwindcss.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            filetypes = html_file_types,
-          })
-        end,
       },
     })
 
-    vim.filetype.add({ extension = { templ = "templ" } })
     -- set diagnostic keymab
   end,
 }

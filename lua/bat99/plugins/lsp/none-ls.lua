@@ -28,6 +28,7 @@ return {
         nls.builtins.diagnostics.djlint,
         nls.builtins.diagnostics.phpcs,
         nls.builtins.diagnostics.phpstan,
+        nls.builtins.diagnostics.editorconfig_checker,
 
         nls.builtins.code_actions.refactoring,
       },
@@ -37,11 +38,13 @@ return {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              vim.lsp.buf.format({
-                filter = function(c)
-                  return c.name == "null-ls"
-                end,
-              })
+              if vim.bo.filetype ~= "templ" then
+                vim.lsp.buf.format({
+                  filter = function(c)
+                    return c.name == "null-ls"
+                  end,
+                })
+              end
             end,
           })
         end

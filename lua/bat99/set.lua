@@ -6,6 +6,7 @@ end
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.editorconfig = true
 
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
