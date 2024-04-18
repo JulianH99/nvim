@@ -13,7 +13,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("bat99.set")
 
-require("lazy").setup({ { import = "bat99/plugins" }, { import = "bat99/plugins/lsp" } })
+require("lazy").setup({
+  { import = "bat99/plugins" },
+  { import = "bat99/plugins/lsp" },
+  { import = "bat99/plugins/themes" },
+})
 require("bat99.keymaps")
 require("bat99.commands")
 

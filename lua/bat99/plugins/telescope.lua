@@ -25,7 +25,7 @@ return {
     vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
     vim.keymap.set("n", "<leader>fc", builtin.current_buffer_fuzzy_find, {})
-    vim.keymap.set("n", "<leader>fr", builtin.git_files, { noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>fg", builtin.git_files, { noremap = true, silent = true })
     vim.keymap.set("n", "<leader>gb", builtin.git_branches, {})
 
     telescope.setup({

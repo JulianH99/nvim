@@ -28,7 +28,6 @@ return {
         nls.builtins.diagnostics.djlint,
         nls.builtins.diagnostics.phpcs,
         nls.builtins.diagnostics.phpstan,
-        nls.builtins.diagnostics.editorconfig_checker,
 
         nls.builtins.code_actions.refactoring,
       },
