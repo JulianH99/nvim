@@ -3,6 +3,13 @@ return {
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "BufEnter",
+  keys = {
+    { "<leader>a" },
+    { "<leader>ha" },
+    { "<leader>hr" },
+    { "<leader>hs" },
+    { "<leader>ht" },
+  },
   config = function()
     local harpoon = require("harpoon")
     local set = vim.keymap.set
@@ -13,7 +20,7 @@ return {
     -- Add to list
     opts.desc = "Add file to list"
     set("n", "<leader>a", function()
-      harpoon:list():append()
+      harpoon:list():add()
     end, opts)
 
     -- show list
@@ -36,6 +43,9 @@ return {
     end, opts)
     set("n", "<leader>ht", function()
       harpoon:list():select(4)
+    end, opts)
+    set("n", "<leader>ht", function()
+      harpoon:list():select(5)
     end, opts)
   end,
 }

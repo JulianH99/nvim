@@ -103,10 +103,9 @@ return {
         "theme_check",
         "templ",
         "astro",
-        "pyright",
         "jsonls",
         "eslint",
-        "ruff_lsp",
+        "basedpyright",
       },
 
       automatic_installation = true,
