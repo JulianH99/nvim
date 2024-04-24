@@ -4,6 +4,8 @@ if vim.loop.os_uname().sysname == "Linux" then
   home = os.getenv("HOME")
 end
 
+vim.g.netrw_liststyle = 3
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.editorconfig = true
