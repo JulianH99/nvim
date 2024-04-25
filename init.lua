@@ -17,6 +17,10 @@ require("lazy").setup({
   { import = "bat99/plugins" },
   { import = "bat99/plugins/lsp" },
   { import = "bat99/plugins/themes" },
+}, {
+  change_detection = {
+    notify = false,
+  },
 })
 require("bat99.keymaps")
 require("bat99.commands")

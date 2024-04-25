@@ -13,10 +13,9 @@ vim.g.editorconfig = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-vim.cmd("set textwidth=80")
-
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.cmd("set textwidth=80")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -60,6 +59,8 @@ vim.opt.fillchars = { eob = " " }
 vim.opt.list = true
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
+
+vim.opt.backspace = "indent,eol,start"
 
 vim.opt.foldmethod = "manual"
 vim.opt.foldcolumn = "1" -- '0' is not bad

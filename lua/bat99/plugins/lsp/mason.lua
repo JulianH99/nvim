@@ -8,6 +8,8 @@ return {
     -- "kevinhwang91/nvim-ufo",
   },
   config = function()
+    -- TODO: move to lspconfig file and use autocmd to attach keybinds for lsp
+    -- related stuff
     local mason = require("mason")
     local masonlsp = require("mason-lspconfig")
     local lsp = require("lspconfig")
