@@ -3,7 +3,6 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "nvim-treesitter/nvim-treesitter-context",
     "windwp/nvim-ts-autotag",
   },
   config = function()
@@ -65,11 +64,5 @@ return {
       filetype = "gotmpl",
       used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml", "gohtml" },
     }
-
-    require("treesitter-context").setup({
-      enable = true,
-      max_lines = 2,
-      min_window_height = 100,
-    })
   end,
 }

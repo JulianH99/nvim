@@ -28,8 +28,6 @@ return {
         nls.builtins.diagnostics.djlint,
         nls.builtins.diagnostics.phpcs,
         nls.builtins.diagnostics.phpstan,
-
-        nls.builtins.code_actions.refactoring,
       },
       on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
