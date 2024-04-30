@@ -1,7 +1,7 @@
 return {
   "anuvyklack/windows.nvim",
   dependencies = "anuvyklack/middleclass",
-  event = "BufReadPre",
+  event = { "WinEnter", "WinNew" },
   config = function()
     require("windows").setup()
   end,

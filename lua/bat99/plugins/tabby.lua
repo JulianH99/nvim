@@ -1,6 +1,6 @@
 return {
   "nanozuki/tabby.nvim",
-  event = "TabEnter",
+  event = "TabNew",
   config = function()
     require("tabby.tabline").use_preset("active_wins_at_tail", {
       nerdfont = false,

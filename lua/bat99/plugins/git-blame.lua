@@ -1,7 +1,9 @@
 return {
-  'f-person/git-blame.nvim',
+  "f-person/git-blame.nvim",
   config = function()
-    vim.cmd [[GitBlameDisable]]
+    vim.keymap.set("n", "<leader>gbe", "<cmd>GitBlameEnable<cr>", {})
+    vim.keymap.set("n", "<leader>gbd", "<cmd>GitBlameDisable<cr>", {})
+    vim.cmd([[GitBlameDisable]])
   end,
-  cmd = "GitBlameEnable"
+  cmd = "GitBlameEnable",
 }
