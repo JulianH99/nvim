@@ -8,7 +8,6 @@ return {
     nls.setup({
       sources = {
         nls.builtins.formatting.stylua,
-        nls.builtins.formatting.autopep8,
         nls.builtins.formatting.prettier.with({
           filetypes = {
             "astro",
@@ -26,13 +25,9 @@ return {
         nls.builtins.formatting.djlint,
         nls.builtins.formatting.phpcsfixer,
 
-        nls.builtins.diagnostics.eslint_d,
         nls.builtins.diagnostics.djlint,
         nls.builtins.diagnostics.phpcs,
         nls.builtins.diagnostics.phpstan,
-
-        nls.builtins.code_actions.refactoring,
-        nls.builtins.code_actions.eslint_d,
       },
       on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
@@ -40,11 +35,13 @@ return {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              vim.lsp.buf.format({
-                filter = function(c)
-                  return c.name == "null-ls"
-                end,
-              })
+              if vim.bo.filetype ~= "templ" then
+                vim.lsp.buf.format({
+                  filter = function(c)
+                    return c.name == "null-ls"
+                  end,
+                })
+              end
             end,
           })
         end

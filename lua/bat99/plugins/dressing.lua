@@ -1,5 +1,8 @@
 return {
-  'stevearc/dressing.nvim',
-  opts = {},
-  event = "VeryLazy"
+  "stevearc/dressing.nvim",
+  event = "VeryLazy",
+
+  config = function()
+    require("dressing").setup()
+  end,
 }

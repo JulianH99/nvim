@@ -5,16 +5,18 @@ return {
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp",
     "folke/neodev.nvim",
+    -- "kevinhwang91/nvim-ufo",
   },
   config = function()
+    -- TODO: use mason tool installer
+    -- TODO: move to lspconfig file and use autocmd to attach keybinds for lsp
+    -- related stuff
     local mason = require("mason")
     local masonlsp = require("mason-lspconfig")
     local lsp = require("lspconfig")
     local cmplsp = require("cmp_nvim_lsp")
 
     local neodev = require("neodev")
-
-    -- TODO: set all telescope pickers with the ivy theme
 
     local keymap = vim.keymap -- for conciseness
 
@@ -67,16 +69,14 @@ return {
     end
 
     -- setup capabilities
-    local capabilities = cmplsp.default_capabilities()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+    vim.filetype.add({ extension = { templ = "templ" } })
+
+    capabilities = vim.tbl_deep_extend("force", capabilities, cmplsp.default_capabilities())
 
     mason.setup()
 
-    -- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-    -- for type, icon in pairs(signs) do
-    -- 	local hl = "DiagnosticSign" .. type
-    -- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    -- end
-    --
     local html_file_types = {
       "html",
       "typescriptreact",
@@ -91,6 +91,7 @@ return {
       "astro",
       "htmldjango",
       "phpactor",
+      "twig",
     }
 
     neodev.setup({})
@@ -105,9 +106,9 @@ return {
         "theme_check",
         "templ",
         "astro",
-        "pyright",
-        "tailwindcss",
         "jsonls",
+        "eslint",
+        "basedpyright",
       },
 
       automatic_installation = true,
@@ -153,17 +154,9 @@ return {
             filetypes = { "templ" },
           })
         end,
-        ["tailwindcss"] = function()
-          lsp.tailwindcss.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            filetypes = html_file_types,
-          })
-        end,
       },
     })
 
-    vim.filetype.add({ extension = { templ = "templ" } })
     -- set diagnostic keymab
   end,
 }
