@@ -9,7 +9,7 @@ return {
     "nvim-telescope/telescope.nvim", -- optional
   },
   config = function()
-    vim.keymap.set("n", "<leader>gg", "<cmd>Neogit", {})
+    vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", {})
     require("neogit").setup({})
   end,
 }
