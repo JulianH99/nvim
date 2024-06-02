@@ -33,3 +33,8 @@ require("bat99.highlight")
 -- put transparent background
 -- vim.cmd([[highlight Normal guibg=none]])
 -- vim.cmd([[highlight NonText guibg=none]])
+--
+-- set random colorscheme
+local colorschemes = { "kanagawa-dragon", "gruvbox-material" }
+
+vim.cmd("colorscheme " .. colorschemes[math.random(2)])
