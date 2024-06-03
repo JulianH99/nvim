@@ -35,6 +35,12 @@ require("bat99.highlight")
 -- vim.cmd([[highlight NonText guibg=none]])
 --
 -- set random colorscheme
-local colorschemes = { "kanagawa-dragon", "gruvbox-material" }
+vim.g.gruvbox_material_background = "hard"
+vim.g.gruvbox_material_enable_bold = 1
+vim.g.gruvbox_material_enable_italic = 1
+vim.g.gruvbox_material_foreground = "original"
 
-vim.cmd("colorscheme " .. colorschemes[math.random(2)])
+local colorschemes = { "kanagawa-dragon", "gruvbox-material" }
+local random_index = math.random(1, #colorschemes)
+
+vim.cmd("colorscheme " .. colorschemes[random_index])
