@@ -40,7 +40,9 @@ vim.g.gruvbox_material_enable_bold = 1
 vim.g.gruvbox_material_enable_italic = 1
 vim.g.gruvbox_material_foreground = "original"
 
-local colorschemes = { "kanagawa-dragon", "gruvbox-material" }
+local colorschemes = { "kanagawa-dragon", "gruvbox-material", "rose-pine" }
+math.randomseed(os.time())
+math.random()
 local random_index = math.random(1, #colorschemes)
 
 vim.cmd("colorscheme " .. colorschemes[random_index])
