@@ -19,7 +19,6 @@ vim.cmd("set textwidth=80")
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
-vim.opt.smartindent = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
