@@ -28,6 +28,7 @@ return {
         nls.builtins.diagnostics.djlint,
         nls.builtins.diagnostics.phpcs,
         nls.builtins.diagnostics.phpstan,
+        nls.builtins.diagnostics.golangci_lint,
       },
       on_attach = function(client, bufnr)
         if client.supports_method("textDocument/formatting") then
