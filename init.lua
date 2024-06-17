@@ -25,24 +25,12 @@ require("lazy").setup({
 require("bat99.keymaps")
 require("bat99.commands")
 
--- vim.cmd("colorscheme kanagawa-dragon")
--- vim.cmd("colorscheme evergarden")
-
 require("bat99.highlight")
 
--- put transparent background
--- vim.cmd([[highlight Normal guibg=none]])
--- vim.cmd([[highlight NonText guibg=none]])
---
 -- set random colorscheme
 vim.g.gruvbox_material_background = "hard"
 vim.g.gruvbox_material_enable_bold = 1
 vim.g.gruvbox_material_enable_italic = 1
 vim.g.gruvbox_material_foreground = "original"
 
-local colorschemes = { "kanagawa-dragon", "gruvbox-material", "rose-pine" }
-math.randomseed(os.time())
-math.random()
-local random_index = math.random(1, #colorschemes)
-
-vim.cmd("colorscheme " .. colorschemes[random_index])
+require("bat99.themer").pick_random_colorscheme()
