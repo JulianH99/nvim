@@ -53,9 +53,18 @@ return {
           theme = "ivy",
         },
       },
+      layout_config = {
+        height = 10,
+      },
       defaults = {
         theme = "ivy",
         previewer = true,
+        layout_config = {
+          bottom_pane = {
+            height = 10,
+          },
+          height = 10,
+        },
       },
     })
 
