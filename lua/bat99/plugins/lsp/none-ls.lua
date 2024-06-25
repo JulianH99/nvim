@@ -8,7 +8,7 @@ return {
     nls.setup({
       sources = {
         nls.builtins.formatting.stylua,
-        nls.builtins.formatting.prettier.with({
+        nls.builtins.formatting.prettierd.with({
           filetypes = {
             "astro",
             "javascript",
