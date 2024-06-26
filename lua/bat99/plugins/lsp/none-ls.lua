@@ -25,9 +25,7 @@ return {
         nls.builtins.formatting.djlint,
         nls.builtins.formatting.phpcsfixer,
 
-        nls.builtins.diagnostics.djlint,
         nls.builtins.diagnostics.phpcs,
-        nls.builtins.diagnostics.phpstan,
         nls.builtins.diagnostics.golangci_lint,
       },
       on_attach = function(client, bufnr)
