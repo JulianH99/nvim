@@ -1,5 +1,5 @@
 local lualine_config = require("bat99.lualine_config")
-local themes = { "kanagawa-dragon", "gruvbox-material", "rose-pine" }
+local themes = { "kanagawa-dragon", "gruvbox-material", "rose-pine", "sonokai" }
 
 local M = {
   -- this is the default colorscheme applied to gruvbox-material
