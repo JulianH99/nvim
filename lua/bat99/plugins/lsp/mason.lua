@@ -90,7 +90,7 @@ return {
       "templ",
       "astro",
       "htmldjango",
-      "phpactor",
+      "php",
       "twig",
     }
 
