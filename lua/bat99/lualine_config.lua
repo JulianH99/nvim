@@ -54,14 +54,6 @@ function M.get_config(colors)
 
   -- left components
   left({
-    function()
-      return "▊"
-    end,
-    color = { fg = colors.blue },
-    padding = { left = 0, right = 1 },
-  })
-
-  left({
     -- "mode",
     function()
       local modes = {
