@@ -33,4 +33,4 @@ vim.g.gruvbox_material_enable_bold = 1
 vim.g.gruvbox_material_enable_italic = 1
 vim.g.gruvbox_material_foreground = "original"
 
-require("bat99.themer").pick_random_colorscheme()
+vim.cmd("RandomTheme")

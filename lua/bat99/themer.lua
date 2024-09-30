@@ -1,5 +1,5 @@
 local lualine_config = require("bat99.lualine_config")
-local themes = { "kanagawa-dragon", "gruvbox-material", "rose-pine", "sonokai" }
+local themes = { "kanagawa-dragon", "gruvbox-material", "rose-pine", "sonokai", "everforest" }
 
 local M = {
   -- this is the default colorscheme applied to gruvbox-material
@@ -78,6 +78,24 @@ function M.get_palette_from_colorscheme(colorscheme)
       blue = rose_pine.foam,
       purple = rose_pine.iris,
       aqua = rose_pine.Foam,
+    }
+
+    return meta_colors
+  elseif colorscheme == "sonokai" then
+    local meta_colors = {
+      bg = "#2d2a2e",
+      bg_inactive = "#3b383e",
+
+      fg = "#e3e1e4",
+      fg_inactive = "#848089",
+
+      -- colors
+      yellow = "#e5c463",
+      red = "#ff6188",
+      green = "#a9dc76",
+      blue = "#78dce8",
+      purple = "#ab9df2",
+      aqua = "#46d9ff",
     }
 
     return meta_colors

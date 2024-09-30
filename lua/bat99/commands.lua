@@ -2,6 +2,10 @@ vim.api.nvim_create_user_command("W", function()
   vim.cmd([[noa w]])
 end, {})
 
+vim.api.nvim_create_user_command("RandomTheme", function()
+  require("bat99.themer").pick_random_colorscheme()
+end, {})
+
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*.html",
   callback = function()
