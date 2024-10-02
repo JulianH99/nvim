@@ -24,6 +24,12 @@ return {
         nls.builtins.formatting.goimports,
         nls.builtins.formatting.djlint,
         nls.builtins.formatting.phpcsfixer,
+        nls.builtins.formatting.clang_format.with({
+          filetype = {
+            "c",
+            "cpp",
+          },
+        }),
 
         nls.builtins.diagnostics.phpcs,
         nls.builtins.diagnostics.golangci_lint,
