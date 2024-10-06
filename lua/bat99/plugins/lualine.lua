@@ -6,7 +6,7 @@ return {
   priority = 10000,
   dependencies = {
     {
-      "nvim-tree/nvim-web-devicons",
+      "echasnovski/mini.icons",
       opt = true,
     },
   },
