@@ -8,6 +8,7 @@ local themes = {
   "evergarden",
   "monokai",
   "monokai_pro",
+  "alduin",
 }
 
 local M = {
