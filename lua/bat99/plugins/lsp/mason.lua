@@ -119,6 +119,24 @@ return {
             capabilities = capabilities,
           })
         end,
+        ["ts_ls"] = function()
+          local mason_registry = require("mason-registry")
+          local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+            .. "/node_modules/@vue/language-server"
+
+          lsp["ts_ls"].setup({
+            init_options = {
+              plugins = {
+                {
+                  name = "@vue/typescript-plugin",
+                  location = vue_language_server_path,
+                  languages = { "vue" },
+                },
+              },
+            },
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+          })
+        end,
         ["html"] = function()
           lsp.html.setup({
             on_attach = on_attach,
@@ -152,6 +170,13 @@ return {
             on_attach = on_attach,
             capabilities = capabilities,
             filetypes = { "templ" },
+          })
+        end,
+        ["volar"] = function()
+          lsp.volar.setup({
+            filetypes = { "vue" },
+            on_attach = on_attach,
+            capabilities = capabilities,
           })
         end,
       },
