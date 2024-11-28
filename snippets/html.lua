@@ -12,8 +12,6 @@ table.insert(
     t({ '<div class="swiper">', "\t" }),
     t({ '<div class="swiper-wrapper">', "\t" }),
     t({ '<div class="swiper-slide">Slide 1</div>' }),
-    t({ '<div class="swiper-slide">Slide 2</div>' }),
-    t({ '<div class="swiper-slide">Slide 3</div>' }),
     t({ "</div>" }),
     t({ '<div class="swiper-pagination"></div>' }),
     t({ '<div class="swiper-button-prev"></div>' }),

@@ -3,6 +3,11 @@ return {
   dependencies = { "echasnovski/mini.icons" },
   keys = {
     {
+      "<leader>tt",
+      "<cmd>TodoTrouble<cr>",
+      desc = "View todo comments in trouble list",
+    },
+    {
       "<leader>tw",
       "<cmd>Trouble diagnostics toggle focus=true<cr>",
       desc = "Workspace Diagnostics (trouble)",

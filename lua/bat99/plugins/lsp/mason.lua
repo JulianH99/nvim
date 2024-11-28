@@ -46,9 +46,6 @@ return {
       opts.desc = "Smart rename"
       keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
-      opts.desc = "Show buffer diagnostics"
-      keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
-
       opts.desc = "Show line diagnostics"
       keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
@@ -57,9 +54,6 @@ return {
 
       opts.desc = "Go to next diagnostic"
       keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
-      opts.desc = "Show list of diagnostics"
-      keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
 
       opts.desc = "Show documentation for what is under cursor"
       keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
@@ -109,6 +103,7 @@ return {
         "jsonls",
         "eslint",
         "basedpyright",
+        "eslint",
       },
 
       automatic_installation = true,
@@ -153,6 +148,12 @@ return {
               Lua = {
                 diagnostics = {
                   globals = { "vim", "awesome", "screen", "client", "tag" },
+                },
+              },
+              eslint = {
+                settings = {
+                  workingDirectories = { mode = "auto" },
+                  useFlatConfig = true,
                 },
               },
             },

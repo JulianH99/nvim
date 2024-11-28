@@ -13,23 +13,35 @@ return {
 
     telescope.load_extension("ui-select")
 
+    -- find git files
     vim.keymap.set("n", "<leader>ff", function()
+      builtin.git_files({ previewer = false })
+    end, { noremap = true, silent = true, desc = "Find git files" })
+
+    -- find all files
+    vim.keymap.set("n", "<leader>fF", function()
       builtin.find_files({
         find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
         previewer = false,
       })
-    end, {})
-    vim.keymap.set("n", "<leader>fs", builtin.live_grep, {})
-    vim.keymap.set("n", "<leader>fS", builtin.grep_string, { silent = true })
-    vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-    vim.keymap.set("n", "<leader>fc", builtin.current_buffer_fuzzy_find, {})
-    vim.keymap.set("n", "<leader>fg", builtin.git_files, { noremap = true, silent = true })
-    vim.keymap.set("n", "<leader>gb", builtin.git_branches, {})
+    end, { silent = true, desc = "Find files with grep" })
+
+    vim.keymap.set("n", "<leader>fs", builtin.live_grep, { silent = true, desc = "Find in project" })
+    vim.keymap.set("n", "<leader>fS", builtin.grep_string, { silent = true, desc = "Find current word in project" })
+    vim.keymap.set(
+      "n",
+      "<leader>fc",
+      builtin.current_buffer_fuzzy_find,
+      { silent = true, desc = "Find in current buffer" }
+    )
 
     telescope.setup({
       theme = "ivy",
 
       pickers = {
+        grep_string = {
+          theme = "ivy",
+        },
         live_grep = {
           theme = "ivy",
         },

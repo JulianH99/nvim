@@ -19,6 +19,6 @@ return {
       },
     })
 
-    vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+    vim.keymap.set("n", "-", require("oil").toggle_float, { desc = "Open parent directory" })
   end,
 }
