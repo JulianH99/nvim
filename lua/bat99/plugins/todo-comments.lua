@@ -20,10 +20,12 @@ return {
     {
       "]t",
       "<cmd>lua require('todo-comments').jump_next()<cr>",
+      desc = "Next todo comments",
     },
     {
       "[t",
       "<cmd>lua require('todo-comments').jump_prev()<cr>",
+      desc = "Previous todo comments",
     },
   },
 }

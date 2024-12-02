@@ -7,9 +7,13 @@ return {
   config = function()
     require("oil").setup({
       default_file_explorer = true,
+      delete_to_trash = true,
       columns = { "icon" },
       view_options = {
         show_hidden = true,
+      },
+      float = {
+        padding = 2,
       },
       keymaps = {
         ["<C-h>"] = false,

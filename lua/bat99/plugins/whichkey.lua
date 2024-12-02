@@ -7,6 +7,8 @@ return {
     -- refer to the configuration section below
     triggers = {
       { "<leader>", mode = { "n", "v" } },
+      { "[", mode = { "n" } },
+      { "]", mode = { "n" } },
     },
     preset = "modern",
   },

@@ -1,6 +1,5 @@
 return {
   "kevinhwang91/nvim-ufo",
-  event = { "BufReadPre", "BufNewFile" },
   dependencies = { "kevinhwang91/promise-async" },
   config = function()
     vim.keymap.set("n", "zR", require("ufo").openAllFolds, { desc = "Open folds" })
