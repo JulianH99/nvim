@@ -19,12 +19,7 @@ return {
     end, { noremap = true, silent = true, desc = "Find git files" })
 
     -- find all files
-    vim.keymap.set("n", "<leader>fF", function()
-      builtin.find_files({
-        find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
-        previewer = false,
-      })
-    end, { silent = true, desc = "Find files with grep" })
+    vim.keymap.set("n", "<leader>fF", builtin.find_files, { silent = true, desc = "Find files with grep" })
 
     vim.keymap.set("n", "<leader>fs", builtin.live_grep, { silent = true, desc = "Find in project" })
     vim.keymap.set("n", "<leader>fS", builtin.grep_string, { silent = true, desc = "Find current word in project" })
@@ -47,6 +42,14 @@ return {
         },
         find_files = {
           theme = "ivy",
+          previewer = false,
+          hidden = true,
+          no_ignore = true,
+          file_ignore_patterns = {
+            "node_modules",
+            ".venv",
+            ".git",
+          },
         },
         buffers = {
           theme = "ivy",

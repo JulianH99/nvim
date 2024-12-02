@@ -11,6 +11,9 @@ return {
     "saadparwaiz1/cmp_luasnip",
     -- lsp kind
     "onsails/lspkind.nvim",
+
+    -- shopify input types cmp
+    { dir = "~/.config/nvim/plugin/cmp-shopify-input-types" },
   },
   config = function()
     local cmp = require("cmp")
@@ -54,9 +57,10 @@ return {
       -- configure sources
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        { name = "luasnip" },
         { name = "path" },
         { name = "buffer" },
+        { name = "shopify-input-types" },
+        { name = "luasnip" },
       }),
     })
 
