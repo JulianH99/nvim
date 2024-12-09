@@ -7,6 +7,8 @@ local themes = {
   "monokai",
   "monokai_pro",
   "alduin",
+  "night-owl",
+  "oldworld",
 }
 
 local M = {

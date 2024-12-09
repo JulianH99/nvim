@@ -17,6 +17,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
+-- highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Higlight when yanking text",
   group = vim.api.nvim_create_augroup("yank", { clear = true }),
@@ -41,4 +42,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       end,
     })
   end,
+})
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "docker-compose.yml", "docker-compose.yaml" },
+  command = [[set filetype=yaml.docker-compose]],
 })
