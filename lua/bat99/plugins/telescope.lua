@@ -11,8 +11,6 @@ return {
     local telescope = require("telescope")
     local builtin = require("telescope.builtin")
 
-    telescope.load_extension("ui-select")
-
     -- find git files
     vim.keymap.set("n", "<leader>ff", function()
       builtin.git_files({ previewer = false })
@@ -32,7 +30,10 @@ return {
 
     telescope.setup({
       theme = "ivy",
-
+      extensions = {
+        fzf = {},
+        ["ui-select"] = {},
+      },
       pickers = {
         grep_string = {
           theme = "ivy",
@@ -84,5 +85,6 @@ return {
     })
 
     telescope.load_extension("fzf")
+    telescope.load_extension("ui-select")
   end,
 }

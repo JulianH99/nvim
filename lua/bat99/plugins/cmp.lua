@@ -13,7 +13,7 @@ return {
     "onsails/lspkind.nvim",
 
     -- shopify input types cmp
-    { dir = "~/.config/nvim/plugin/cmp-shopify-input-types" },
+    { dir = "~/external/projects/personal/nvim-plugins/cmp-shopify-input-types/" },
   },
   config = function()
     local cmp = require("cmp")
