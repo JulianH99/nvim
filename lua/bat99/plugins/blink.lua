@@ -34,7 +34,4 @@ return {
     },
     signature = { enabled = true },
   },
-  config = function()
-    require("luasnip.loaders.from_lua").lazy_load({ paths = { "./snippets" } })
-  end,
 }
