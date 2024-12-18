@@ -3,8 +3,9 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    "hrsh7th/cmp-nvim-lsp",
+    -- "hrsh7th/cmp-nvim-lsp",
     "folke/neodev.nvim",
+    "saghen/blink.cmp",
     -- "kevinhwang91/nvim-ufo",
   },
   config = function()
@@ -14,7 +15,8 @@ return {
     local mason = require("mason")
     local masonlsp = require("mason-lspconfig")
     local lsp = require("lspconfig")
-    local cmplsp = require("cmp_nvim_lsp")
+    -- local cmplsp = require("cmp_nvim_lsp")
+    local blink = require("blink.cmp")
 
     local neodev = require("neodev")
 
@@ -67,7 +69,7 @@ return {
 
     vim.filetype.add({ extension = { templ = "templ" } })
 
-    capabilities = vim.tbl_deep_extend("force", capabilities, cmplsp.default_capabilities())
+    capabilities = vim.tbl_deep_extend("force", capabilities, blink.get_lsp_capabilities())
 
     mason.setup()
 

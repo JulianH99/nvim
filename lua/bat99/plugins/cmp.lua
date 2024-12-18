@@ -2,28 +2,29 @@ return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
+    -- "hrsh7th/cmp-nvim-lsp",
+    -- "hrsh7th/cmp-buffer",
+    -- "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
     -- snippets
     "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-    -- lsp kind
-    "onsails/lspkind.nvim",
+    -- "saadparwaiz1/cmp_luasnip",
+    --
+    -- "onsails/lspkind.nvim",
 
     -- shopify input types cmp
-    { dir = "~/external/projects/personal/nvim-plugins/cmp-shopify-input-types/" },
+    -- { dir = "~/external/projects/personal/nvim-plugins/cmp-shopify-input-types/" },
   },
   config = function()
     local cmp = require("cmp")
 
-    local luasnip = require("luasnip")
-    local lspkind = require("lspkind")
+    -- local luasnip = require("luasnip")
+    -- local lspkind = require("lspkind")
 
-    require("luasnip.loaders.from_lua").lazy_load({ paths = { "./snippets" } })
+    -- TODO: call this on blink setup as well
+    -- require("luasnip.loaders.from_lua").lazy_load({ paths = { "./snippets" } })
 
-    cmp.setup({
+    --[[ cmp.setup({
       formatting = {
         format = lspkind.cmp_format({
           mode = "symbol_text",
@@ -62,7 +63,7 @@ return {
         { name = "shopify-input-types" },
         { name = "luasnip" },
       }),
-    })
+    }) ]]
 
     cmp.setup.cmdline({ "/", "?" }, {
       mapping = cmp.mapping.preset.cmdline(),
