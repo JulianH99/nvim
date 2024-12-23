@@ -6,17 +6,52 @@ return {
   },
   version = "v0.*",
   opts = {
-    keymap = { preset = "enter" },
+    enabled = function()
+      return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
+    end,
+    keymap = {
+      preset = "enter",
+    },
 
     appearance = {
       use_nvim_cmp_as_default = true,
       nerd_font_variant = "mono",
     },
+    completion = {
+      menu = {
+        draw = {
+          columns = {
+            { "label", "label_description", gap = 1 },
+            { "kind_icon", gap = 1, "kind" },
+          },
+          components = {
+            kind_icon = {
+              ellipsis = false,
+              text = function(ctx)
+                local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+                return kind_icon
+              end,
+              -- Optionally, you may also use the highlights from mini.icons
+              highlight = function(ctx)
+                local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+                return hl
+              end,
+            },
+          },
+        },
+      },
+      documentation = { auto_show = true },
+      accept = { auto_brackets = { enabled = false } },
+    },
 
     sources = {
-      completion = {
-        enabled_providers = { "lsp", "path", "luasnip", "buffer" },
+      default = {
+        "lsp",
+        "path",
+        "luasnip",
+        "buffer",
       },
+      cmdline = {},
     },
     snippets = {
       expand = function(snippet)
