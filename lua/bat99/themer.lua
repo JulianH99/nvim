@@ -4,8 +4,6 @@ local themes = {
   "gruvbox-material",
   "everforest",
   "evergarden",
-  "monokai",
-  "monokai_pro",
   "alduin",
   "night-owl",
   "oldworld",
