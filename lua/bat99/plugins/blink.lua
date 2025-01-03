@@ -10,7 +10,29 @@ return {
       return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
     end,
     keymap = {
-      preset = "enter",
+      preset = "none",
+      ["<C-space>"] = { "show" },
+      ["<C-e>"] = { "hide", "fallback" },
+      ["<CR>"] = { "accept", "fallback" },
+
+      ["<Tab>"] = { "fallback" },
+      ["<S-Tab>"] = { "fallback" },
+
+      ["<Up>"] = { "select_prev", "fallback" },
+      ["<Down>"] = { "select_next", "fallback" },
+      ["<C-p>"] = {
+        "snippet_backward",
+        -- "select_prev",
+        "fallback",
+      },
+      ["<C-n>"] = {
+        "snippet_forward",
+        -- "select_next",
+        "fallback",
+      },
+
+      ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+      ["<C-f>"] = { "scroll_documentation_down", "fallback" },
     },
 
     appearance = {
@@ -18,11 +40,16 @@ return {
       nerd_font_variant = "mono",
     },
     completion = {
+      list = {
+        selection = function(ctx)
+          return ctx.mode == "cmdline" and "auto_insert" or "preselect"
+        end,
+      },
       menu = {
         draw = {
           columns = {
-            { "label", "label_description", gap = 1 },
-            { "kind_icon", gap = 1, "kind" },
+            { "kind_icon", "label", "label_description", gap = 1 },
+            { "kind" },
           },
           components = {
             kind_icon = {
@@ -51,7 +78,6 @@ return {
         "luasnip",
         "buffer",
       },
-      cmdline = {},
     },
     snippets = {
       expand = function(snippet)

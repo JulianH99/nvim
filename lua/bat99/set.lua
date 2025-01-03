@@ -57,7 +57,7 @@ vim.opt.listchars:append({
 vim.opt.fillchars = { eob = " " }
 vim.opt.list = true
 vim.opt.showmode = false
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes:1"
 
 vim.opt.backspace = "indent,eol,start"
 
