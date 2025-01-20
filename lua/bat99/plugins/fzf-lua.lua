@@ -3,21 +3,26 @@ return {
   -- optional for icon support
   dependencies = { "echasnovski/mini.icons" },
   config = function()
-    -- calling `setup` is optional for customization
+    --TODO: action to set all elements to qflist
     local fzfLua = require("fzf-lua")
-    local actions = require("fzf-lua.actions")
 
     local set = function(key, func, desc, mode)
       vim.keymap.set(mode or "n", key, func, { desc = desc, silent = true, noremap = true })
     end
 
-    set("<leader>ff", function()
-      fzfLua.git_files()
-    end, "Find git files")
+    set("<leader>fa", function()
+      fzfLua.files({
+        fd_opts = "--color=never --type f --hidden --follow --no-ignore --exclude .git --exclude node_modules --exclude .venv --exclude .pycache",
+      })
+    end, "Find in all files")
 
-    set("<leader>fF", function()
-      fzfLua.files()
-    end, "Find files with grep")
+    set("<leader>ff", function()
+      fzfLua.git_files({ cmd = "git ls-files --others --exclude-standard --cached" })
+    end, "Find git files (shows untracked)")
+
+    set("<leader>fh", function()
+      fzfLua.help_tags()
+    end, "Find help tags")
 
     set("<leader>fs", function()
       fzfLua.live_grep()
@@ -34,6 +39,9 @@ return {
     set("<leader>fc", function()
       fzfLua.grep_curbuf()
     end, "Find in current buffer")
+
+    local current_file_actions = require("fzf-lua").defaults.actions.files
+    local actions = require("fzf-lua.actions")
 
     require("fzf-lua").setup({
       "default-title",
@@ -58,12 +66,12 @@ return {
         },
       },
       actions = {
-        files = {
+        files = vim.tbl_deep_extend("force", current_file_actions, {
           ["ctrl-q"] = {
             fn = actions.file_edit_or_qf,
             prefix = "select-all+",
           },
-        },
+        }),
       },
     })
   end,

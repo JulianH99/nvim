@@ -4,6 +4,11 @@ if vim.loop.os_uname().sysname == "Linux" then
   home = os.getenv("HOME")
 end
 
+vim.g.tundra_biome = "jungle"
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.g.netrw_liststyle = 3
 
 vim.g.mapleader = " "
@@ -67,3 +72,5 @@ vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to de
 vim.opt.foldlevelstart = 99
 vim.opt.foldenable = false
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.cmdheight = 0

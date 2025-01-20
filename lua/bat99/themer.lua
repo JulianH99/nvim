@@ -4,9 +4,8 @@ local themes = {
   "gruvbox-material",
   "everforest",
   "evergarden",
-  "alduin",
   "night-owl",
-  "oldworld",
+  "tundra",
 }
 
 local M = {
@@ -68,42 +67,36 @@ function M.get_palette_from_colorscheme(colorscheme)
     }
 
     return meta_colors
-  elseif colorscheme == "rose-pine" then
-    local rose_pine = require("rose-pine.palette")
-
+  elseif colorscheme == "night-owl" then
+    local night_owl = require("night-owl.palette")
+    local colors = {
+      dark = "#010d18",
+      light = "#d6deeb",
+      magenta = "#c792ea",
+      green = "#c5e478",
+      yellow = "#e2b93d",
+      red = night_owl.red,
+      cyan = "#6ae9f0",
+      purple = night_owl.purple,
+      blue = night_owl.blue,
+      dark_blue = "#0e293f",
+      light_blue = "#5f7e97",
+    }
     local meta_colors = {
       -- lualine regions
-      bg = rose_pine.base,
-      bg_inactive = rose_pine.muted,
+      bg = colors.dark,
+      bg_inactive = colors.dark_blue,
 
-      fg = rose_pine.text,
-      fg_inactive = rose_pine.highlight_med,
-
-      -- colors
-      yellow = rose_pine.gold,
-      red = rose_pine.love,
-      green = rose_pine.pine,
-      blue = rose_pine.foam,
-      purple = rose_pine.iris,
-      aqua = rose_pine.Foam,
-    }
-
-    return meta_colors
-  elseif colorscheme == "sonokai" then
-    local meta_colors = {
-      bg = "#2d2a2e",
-      bg_inactive = "#3b383e",
-
-      fg = "#e3e1e4",
-      fg_inactive = "#848089",
+      fg = colors.light,
+      fg_inactive = colors.light_blue,
 
       -- colors
-      yellow = "#e5c463",
-      red = "#ff6188",
-      green = "#a9dc76",
-      blue = "#78dce8",
-      purple = "#ab9df2",
-      aqua = "#46d9ff",
+      yellow = colors.yellow,
+      red = colors.red,
+      green = colors.green,
+      blue = colors.blue,
+      purple = colors.purple,
+      aqua = colors.cyan,
     }
 
     return meta_colors

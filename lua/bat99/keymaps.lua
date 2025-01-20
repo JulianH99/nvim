@@ -30,13 +30,5 @@ map({ "n", "v" }, "x", "x", {})
 map({ "i", "n", "v" }, "<PageUp>", "<nop>")
 map({ "i", "n", "v" }, "<PageDown>", "<nop>")
 
--- line moving
-map("n", "<A-j>", "<cmd>move+1<cr>==")
-map("n", "<A-k>", "<cmd>move-2<cr>==")
-map("i", "<A-j>", "<Esc><cmd>move+1<cr>==gi")
-map("i", "<A-k>", "<Esc><cmd>move-2<cr>==gi")
-map("v", "<A-j>", "<Esc><cmd>'<,'>move'>+1<cr>gv=gv")
-map("v", "<A-k>", "<Esc><cmd>'<,'>move'<-2<cr>gv=gv")
-
 -- utils
 map("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", { desc = "Format current buffer with LSP" })
