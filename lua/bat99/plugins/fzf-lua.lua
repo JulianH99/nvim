@@ -14,7 +14,7 @@ return {
       fzfLua.files({
         fd_opts = "--color=never --type f --hidden --follow --no-ignore --exclude .git --exclude node_modules --exclude .venv --exclude .pycache",
       })
-    end, "Find in all files")
+    end, "Find all files")
 
     set("<leader>ff", function()
       fzfLua.git_files({ cmd = "git ls-files --others --exclude-standard --cached" })
@@ -39,6 +39,10 @@ return {
     set("<leader>fc", function()
       fzfLua.grep_curbuf()
     end, "Find in current buffer")
+
+    set("<leader>fl", function()
+      fzfLua.lsp_document_symbols()
+    end, "LSP Buffer symbols")
 
     local current_file_actions = require("fzf-lua").defaults.actions.files
     local actions = require("fzf-lua.actions")
