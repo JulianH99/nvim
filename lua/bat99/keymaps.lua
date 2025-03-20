@@ -31,4 +31,6 @@ map({ "i", "n", "v" }, "<PageUp>", "<nop>")
 map({ "i", "n", "v" }, "<PageDown>", "<nop>")
 
 -- utils
-map("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", { desc = "Format current buffer with LSP" })
+map("n", "<leader>fm", function()
+  require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "Format current buffer with LSP" })
