@@ -48,7 +48,7 @@ return {
     local actions = require("fzf-lua.actions")
 
     require("fzf-lua").setup({
-      "default-title",
+      "ivy",
       previwers = {
         builtin = {
           syntax_limit_b = 1024 * 100, -- 100KB
@@ -65,8 +65,9 @@ return {
         },
       },
       winopts = {
+        height = 0.6,
         preview = {
-          layout = "vertical",
+          layout = "horizontal",
         },
       },
       actions = {

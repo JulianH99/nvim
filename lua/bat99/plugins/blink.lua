@@ -4,7 +4,7 @@ return {
   dependencies = {
     "L3MON4D3/LuaSnip",
   },
-  version = "v0.*",
+  version = "v0.13.1",
   opts = {
     enabled = function()
       return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false

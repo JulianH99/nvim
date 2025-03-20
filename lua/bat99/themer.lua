@@ -4,7 +4,6 @@ local themes = {
   "gruvbox-material",
   "everforest",
   "evergarden",
-  "night-owl",
   "tundra",
 }
 
