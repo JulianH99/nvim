@@ -4,7 +4,6 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
     -- "hrsh7th/cmp-nvim-lsp",
-    "folke/neodev.nvim",
     "saghen/blink.cmp",
     -- "kevinhwang91/nvim-ufo",
     "ibhagwan/fzf-lua",
@@ -18,8 +17,6 @@ return {
     local lsp = require("lspconfig")
     -- local cmplsp = require("cmp_nvim_lsp")
     local blink = require("blink.cmp")
-
-    local neodev = require("neodev")
 
     local keymap = vim.keymap -- for conciseness
 
@@ -78,11 +75,6 @@ return {
       "html",
       "typescriptreact",
       "javascriptreact",
-      "css",
-      "sass",
-      "scss",
-      "less",
-      "svelte",
       "liquid",
       "templ",
       "astro",
@@ -91,7 +83,13 @@ return {
       "twig",
     }
 
-    neodev.setup({})
+    local css_file_types = {
+      "css",
+      "sass",
+      "scss",
+      "less",
+    }
+
     masonlsp.setup({
       ensure_installed = {
         "ts_ls",
@@ -106,7 +104,8 @@ return {
         "jsonls",
         "eslint",
         "basedpyright",
-        "volar",
+        "vue_ls",
+        "svelte",
       },
 
       automatic_installation = true,
@@ -115,6 +114,14 @@ return {
           lsp[server_name].setup({
             on_attach = on_attach,
             capabilities = capabilities,
+            settings = {
+              eslint = {
+                settings = {
+                  workingDirectories = { mode = "auto" },
+                  useFlatConfig = true,
+                },
+              },
+            },
           })
         end,
         ["ts_ls"] = function()
@@ -153,20 +160,16 @@ return {
                   globals = { "vim", "awesome", "screen", "client", "tag" },
                 },
               },
-              eslint = {
-                settings = {
-                  workingDirectories = { mode = "auto" },
-                  useFlatConfig = true,
-                },
-              },
             },
           })
         end,
         ["emmet_ls"] = function()
+          local file_types = vim.list_extend(html_file_types, css_file_types)
+          file_types = vim.list_extend(file_types, { "svelte" })
           lsp["emmet_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            filetypes = html_file_types,
+            filetypes = file_types,
           })
         end,
         ["templ"] = function()

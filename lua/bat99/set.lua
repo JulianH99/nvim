@@ -73,4 +73,8 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldenable = false
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
+
+vim.diagnostic.config({
+  virtual_lines = true,
+})

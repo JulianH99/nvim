@@ -4,14 +4,16 @@ return {
     require("conform").setup({
       formatters_by_ft = {
         lua = { "stylua" },
-        javascript = { "prettierd", "eslint_d" },
-        astro = { "prettierd", "eslint_d" },
-        typescript = { "prettierd", "eslint_d" },
+        javascript = { "prettierd" },
+        astro = { "prettierd" },
+        typescript = { "prettierd" },
         css = { "prettierd" },
         scss = { "prettierd" },
-        javascriptreact = { "prettierd", "eslint_d" },
-        typescriptreact = { "prettierd", "eslint_d" },
+        javascriptreact = { "prettierd" },
+        typescriptreact = { "prettierd" },
         go = { "gofmt", "goimports", "gofumpt" },
+        templ = { "templ" },
+        -- svelte = { "prettierd" },
       },
       format_on_save = {
         timeout_ms = 500,

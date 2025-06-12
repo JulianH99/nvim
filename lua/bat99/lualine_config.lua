@@ -146,6 +146,15 @@ function M.get_config(colors)
     cond = conditions.hide_in_width,
   })
 
+  --[[ left({
+    function()
+      return "%=" .. "Text" .. "%="
+    end,
+    color = {
+      bg = colors.red,
+    },
+  }) ]]
+
   -- right components
   --
 

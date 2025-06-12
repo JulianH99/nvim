@@ -6,7 +6,7 @@ return {
 
     local set = vim.keymap.set
 
-    set({ "n", "x", "o" }, "m", function()
+    set({ "n", "x", "o" }, "M", function()
       flash.jump({
         search = {
           mode = function(str)
@@ -15,7 +15,7 @@ return {
         },
       })
     end, {})
-    set({ "n", "x", "o" }, "M", function()
+    set({ "n", "x", "o" }, "<M-M>", function()
       require("flash").treesitter()
     end, {})
     set("c", "<c-s>", function()

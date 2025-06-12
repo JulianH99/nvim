@@ -4,7 +4,7 @@ return {
   dependencies = {
     "L3MON4D3/LuaSnip",
   },
-  version = "v0.13.1",
+  version = "v1.0.0",
   opts = {
     enabled = function()
       return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
@@ -78,10 +78,24 @@ return {
 
     sources = {
       default = {
+        "lazydev",
         "lsp",
         "path",
         "snippets",
         "buffer",
+        "blink-shopify-input-types",
+      },
+      providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
+        ["blink-shopify-input-types"] = {
+          name = "Blink Shopify Input Types",
+          module = "blink-shopify-input-types",
+        },
       },
     },
     snippets = { preset = "luasnip" },

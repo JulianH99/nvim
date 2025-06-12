@@ -5,7 +5,7 @@ return {
 
     require("lint").linters_by_ft = {
       go = { "golangcilint" },
-      php = { "phpcs" },
+      -- php = { "phpcs" },
       html = { "htmlhint" },
     }
 
