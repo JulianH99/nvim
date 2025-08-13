@@ -14,6 +14,7 @@ return {
         go = { "gofmt", "goimports", "gofumpt" },
         templ = { "templ" },
         -- svelte = { "prettierd" },
+        liquid = { nil },
       },
       format_on_save = {
         timeout_ms = 500,

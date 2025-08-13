@@ -10,13 +10,13 @@ return {
       vim.keymap.set(mode or "n", key, func, { desc = desc, silent = true, noremap = true })
     end
 
-    set("<leader>fa", function()
+    set("<leader>ff", function()
       fzfLua.files({
         fd_opts = "--color=never --type f --hidden --follow --no-ignore --exclude .git --exclude node_modules --exclude .venv --exclude .pycache",
       })
     end, "Find all files")
 
-    set("<leader>ff", function()
+    set("<leader>fg", function()
       fzfLua.git_files({ cmd = "git ls-files --others --exclude-standard --cached" })
     end, "Find git files (shows untracked)")
 

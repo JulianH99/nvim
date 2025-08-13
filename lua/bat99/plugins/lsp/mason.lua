@@ -14,8 +14,6 @@ return {
     -- related stuff
     local mason = require("mason")
     local masonlsp = require("mason-lspconfig")
-    local lsp = require("lspconfig")
-    -- local cmplsp = require("cmp_nvim_lsp")
     local blink = require("blink.cmp")
 
     local keymap = vim.keymap -- for conciseness
@@ -89,104 +87,94 @@ return {
       "scss",
       "less",
     }
+    local servers = {
+      "ts_ls",
+      "html",
+      "cssls",
+      "lua_ls",
+      "emmet_ls",
+      "gopls",
+      "shopify_theme_ls",
+      "templ",
+      "astro",
+      "jsonls",
+      "eslint",
+      "basedpyright",
+      "vue_ls",
+      "svelte",
+    }
+
+    for _, server in ipairs(servers) do
+      if server == "ts_ls" then
+        -- local mason_registry = require("mason-registry")
+        -- mason_registry.refresh()
+        -- local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+        --   .. "/node_modules/@vue/language-server"
+
+        vim.lsp.config("ts_ls", {
+          on_attach = on_attach,
+          -- init_options = {
+          --   plugins = {
+          --     {
+          --       name = "@vue/typescript-plugin",
+          --       location = vue_language_server_path,
+          --       languages = { "vue" },
+          --     },
+          --   },
+          -- },
+          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+        })
+      elseif server == "html" then
+        vim.lsp.config("html", {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          filetypes = html_file_types,
+        })
+      elseif server == "lua_ls" then
+        vim.lsp.config("lua_ls", {
+          capabilities = capabilities,
+          on_attach = on_attach,
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { "vim", "awesome", "screen", "client", "tag" },
+              },
+            },
+          },
+        })
+      elseif server == "emmet_ls" then
+        local file_types = vim.list_extend(html_file_types, css_file_types)
+        file_types = vim.list_extend(file_types, { "svelte" })
+        vim.lsp.config("emmet_ls", {
+          capabilities = capabilities,
+          on_attach = on_attach,
+          filetypes = file_types,
+        })
+      elseif server == "templ" then
+        vim.lsp.config("templ", {
+          on_attach = on_attach,
+          capabilities = capabilities,
+          filetypes = { "templ" },
+        })
+      else
+        vim.lsp.config(server, {
+          on_attach = on_attach,
+          settings = {
+            eslint = {
+              settings = {
+                workingDirectories = { mode = "auto" },
+                useFlatConfig = true,
+              },
+            },
+          },
+        })
+      end
+    end
 
     masonlsp.setup({
-      ensure_installed = {
-        "ts_ls",
-        "html",
-        "cssls",
-        "lua_ls",
-        "emmet_ls",
-        "gopls",
-        "shopify_theme_ls",
-        "templ",
-        "astro",
-        "jsonls",
-        "eslint",
-        "basedpyright",
-        "vue_ls",
-        "svelte",
-      },
-
+      ensure_installed = servers,
       automatic_installation = true,
-      handlers = {
-        function(server_name) -- default handler (optional)
-          lsp[server_name].setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = {
-              eslint = {
-                settings = {
-                  workingDirectories = { mode = "auto" },
-                  useFlatConfig = true,
-                },
-              },
-            },
-          })
-        end,
-        ["ts_ls"] = function()
-          local mason_registry = require("mason-registry")
-          local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-            .. "/node_modules/@vue/language-server"
-
-          lsp["ts_ls"].setup({
-            init_options = {
-              plugins = {
-                {
-                  name = "@vue/typescript-plugin",
-                  location = vue_language_server_path,
-                  languages = { "vue" },
-                },
-              },
-            },
-            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-          })
-        end,
-        ["html"] = function()
-          lsp.html.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            filetypes = html_file_types,
-          })
-        end,
-        ["lua_ls"] = function()
-          local lspconfig = require("lspconfig")
-          lspconfig.lua_ls.setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { "vim", "awesome", "screen", "client", "tag" },
-                },
-              },
-            },
-          })
-        end,
-        ["emmet_ls"] = function()
-          local file_types = vim.list_extend(html_file_types, css_file_types)
-          file_types = vim.list_extend(file_types, { "svelte" })
-          lsp["emmet_ls"].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            filetypes = file_types,
-          })
-        end,
-        ["templ"] = function()
-          lsp.templ.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-            filetypes = { "templ" },
-          })
-        end,
-        ["volar"] = function()
-          lsp.volar.setup({
-            filetypes = { "vue" },
-            on_attach = on_attach,
-            capabilities = capabilities,
-          })
-        end,
-      },
+      automatic_enable = true,
     })
 
     -- set diagnostic keymab
