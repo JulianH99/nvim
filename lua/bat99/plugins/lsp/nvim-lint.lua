@@ -7,6 +7,8 @@ return {
       go = { "golangcilint" },
       -- php = { "phpcs" },
       html = { "htmlhint" },
+      -- css = { "stylelint" },
+      -- scss = { "stylelint" },
     }
 
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
