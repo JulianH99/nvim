@@ -44,6 +44,10 @@ return {
       fzfLua.lsp_document_symbols()
     end, "LSP Buffer symbols")
 
+    set("<leader>fb", function()
+      fzfLua.buffers()
+    end, "Find all buffers")
+
     local current_file_actions = require("fzf-lua").defaults.actions.files
     local actions = require("fzf-lua.actions")
 
