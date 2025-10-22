@@ -6,8 +6,11 @@ vim.api.nvim_create_user_command("RandomTheme", function()
   require("bat99.themer").pick_random_colorscheme()
 end, {})
 
+local bufgroups = vim.api.nvim_create_augroup("BufFileTypeGroup", { clear = true })
+
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*.html",
+  group = bufgroups,
   callback = function()
     local manage_path = vim.fs.normalize(vim.loop.cwd() .. "/manage.py")
 
@@ -15,6 +18,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
       vim.cmd("set ft=htmldjango")
     end
   end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.axaml",
+  group = bufgroups,
+  command = [[set ft=xml]],
 })
 
 -- highlight on yank

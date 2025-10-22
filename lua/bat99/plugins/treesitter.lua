@@ -4,29 +4,8 @@ return {
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-context",
-    "windwp/nvim-ts-autotag",
   },
   config = function()
-    local autotag_filetypes = {
-      "html",
-      "javascript",
-      "typescript",
-      "javascriptreact",
-      "typescriptreact",
-      "svelte",
-      "vue",
-      "tsx",
-      "jsx",
-      "rescript",
-      "xml",
-      "php",
-      "markdown",
-      "astro",
-      "glimmer",
-      "handlebars",
-      "hbs",
-      "liquid",
-    }
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "python",
@@ -55,10 +34,6 @@ return {
       },
       endwise = {
         enable = true,
-      },
-      autotag = {
-        enable = true,
-        filetypes = autotag_filetypes,
       },
       indent = {
         enable = true,

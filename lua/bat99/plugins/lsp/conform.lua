@@ -1,7 +1,8 @@
 return {
   "stevearc/conform.nvim",
   config = function()
-    require("conform").setup({
+    local conform = require("conform")
+    conform.setup({
       formatters_by_ft = {
         lua = { "stylua" },
         javascript = { "prettierd" },
@@ -15,6 +16,11 @@ return {
         templ = { "templ" },
         -- svelte = { "prettierd" },
         liquid = { nil },
+        cs = { "csharpier" },
+
+        -- FIXME: install dotnet?
+        -- cs = { "csharpier" },
+        -- csharp = { "csharpier" },
       },
       format_on_save = {
         timeout_ms = 500,

@@ -12,7 +12,7 @@ return {
 
     set("<leader>ff", function()
       fzfLua.files({
-        fd_opts = "--color=never --type f --hidden --follow --no-ignore --exclude .git --exclude node_modules --exclude .venv --exclude .pycache",
+        fd_opts = "--color=never --type f --hidden --follow --no-ignore --exclude .git --exclude node_modules --exclude .venv --exclude .pycache --exclude bin --exclude build",
       })
     end, "Find all files")
 
