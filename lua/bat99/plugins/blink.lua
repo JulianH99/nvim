@@ -7,7 +7,9 @@ return {
   version = "v1.7.0",
   opts = {
     enabled = function()
-      return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
+      return not vim.list_contains({ "DressingInput" }, vim.bo.filetype)
+        and vim.bo.buftype ~= "prompt"
+        and vim.b.completion ~= false
     end,
     keymap = {
       preset = "none",
