@@ -3,9 +3,9 @@ return {
   event = "TabNew",
   config = function()
     require("tabby.tabline").use_preset("active_wins_at_tail", {
-      nerdfont = false,
+      nerdfont = true,
       buf_name = {
-        mode = "relative",
+        mode = "shorten",
       },
     })
   end,

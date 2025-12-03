@@ -17,6 +17,7 @@ require("lazy").setup({
   { import = "bat99/plugins" },
   { import = "bat99/plugins/lsp" },
   { import = "bat99/plugins/themes" },
+  { import = "bat99/plugins/locals" },
 }, {
   change_detection = {
     notify = false,

@@ -10,7 +10,7 @@ return {
       { "[", mode = { "n" } },
       { "]", mode = { "n" } },
     },
-    preset = "modern",
+    preset = "helix",
   },
   keys = {
     {

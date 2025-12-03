@@ -3,29 +3,9 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "windwp/nvim-ts-autotag",
+    "nvim-treesitter/nvim-treesitter-context",
   },
   config = function()
-    local autotag_filetypes = {
-      "html",
-      "javascript",
-      "typescript",
-      "javascriptreact",
-      "typescriptreact",
-      "svelte",
-      "vue",
-      "tsx",
-      "jsx",
-      "rescript",
-      "xml",
-      "php",
-      "markdown",
-      "astro",
-      "glimmer",
-      "handlebars",
-      "hbs",
-      "liquid",
-    }
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         "python",
@@ -40,11 +20,11 @@ return {
         "astro",
         "templ",
       },
-      auto_install = false,
+      auto_install = true,
       ignore_install = {},
       highlight = {
         enable = true,
-        disable = function(lang, buf)
+        disable = function(_, buf)
           local max_filesize = 100 * 1024 -- 100 KB
           local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
           if ok and stats and stats.size > max_filesize then
@@ -54,10 +34,6 @@ return {
       },
       endwise = {
         enable = true,
-      },
-      autotag = {
-        enable = true,
-        filetypes = autotag_filetypes,
       },
       indent = {
         enable = true,
@@ -73,5 +49,12 @@ return {
       filetype = "gotmpl",
       used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml", "gohtml" },
     }
+
+    require("treesitter-context").setup({
+      enable = true,
+      max_lines = 2,
+      line_numbers = true,
+      multiline_threshold = 20,
+    })
   end,
 }

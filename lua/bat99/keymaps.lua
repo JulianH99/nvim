@@ -23,20 +23,13 @@ map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to system clipboard" })
 map({ "n", "v" }, "<leader>p", '"_dP', { desc = "Paste without overwriting register" })
 map("n", "<leader>Y", [["+Y]], { desc = "Copy to system clipboard" })
 map("n", "<A-p>", [["+p]], { desc = "Paste from system clipboard" })
-map({ "n", "v" }, "<leader>d", [["_d]], { desc = "Delete to void register" })
 map({ "n", "v" }, "x", "x", {})
 
 -- i hate page up and down
 map({ "i", "n", "v" }, "<PageUp>", "<nop>")
 map({ "i", "n", "v" }, "<PageDown>", "<nop>")
 
--- line moving
-map("n", "<A-j>", "<cmd>move+1<cr>==")
-map("n", "<A-k>", "<cmd>move-2<cr>==")
-map("i", "<A-j>", "<Esc><cmd>move+1<cr>==gi")
-map("i", "<A-k>", "<Esc><cmd>move-2<cr>==gi")
-map("v", "<A-j>", "<Esc><cmd>'<,'>move'>+1<cr>gv=gv")
-map("v", "<A-k>", "<Esc><cmd>'<,'>move'<-2<cr>gv=gv")
-
 -- utils
-map("n", "<leader>fm", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", { desc = "Format current buffer with LSP" })
+map("n", "<leader>fm", function()
+  require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "Format current buffer with LSP" })

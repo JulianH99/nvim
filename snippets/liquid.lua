@@ -88,6 +88,15 @@ table.insert(
   })
 )
 
+table.insert(
+  snippets,
+  s({ trig = "comment", dscr = "comment" }, {
+    t({ "{% comment %}", "\t" }),
+    i(1),
+    t({ "", "{% endcomment %}" }),
+  })
+)
+
 -- schema
 table.insert(
   snippets,
