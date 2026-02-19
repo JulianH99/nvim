@@ -19,6 +19,8 @@ return {
         "go",
         "astro",
         "templ",
+        "scss",
+        "angular",
       },
       auto_install = true,
       ignore_install = {},

@@ -70,7 +70,7 @@ vim.opt.foldmethod = "manual"
 vim.opt.foldcolumn = "1" -- '0' is not bad
 vim.opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 vim.opt.foldlevelstart = 99
-vim.opt.foldenable = false
+vim.opt.foldenable = true
 -- vim.opt.clipboard = "unnamedplus"
 
 vim.opt.cmdheight = 1

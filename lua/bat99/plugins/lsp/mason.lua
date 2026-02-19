@@ -140,6 +140,7 @@ return {
         })
       elseif server == "emmet_ls" then
         local file_types = vim.list_extend(html_file_types, css_file_types)
+        file_types = vim.list_extend(file_types, { "htmlangular" })
         file_types = vim.list_extend(file_types, { "svelte" })
         vim.lsp.config("emmet_ls", {
           capabilities = capabilities,

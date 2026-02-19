@@ -3,8 +3,8 @@ local themes = {
   "kanagawa-dragon",
   "gruvbox-material",
   "everforest",
-  "evergarden",
   "tundra",
+  "catppuccin",
 }
 
 local M = {
@@ -66,36 +66,24 @@ function M.get_palette_from_colorscheme(colorscheme)
     }
 
     return meta_colors
-  elseif colorscheme == "night-owl" then
-    local night_owl = require("night-owl.palette")
-    local colors = {
-      dark = "#010d18",
-      light = "#d6deeb",
-      magenta = "#c792ea",
-      green = "#c5e478",
-      yellow = "#e2b93d",
-      red = night_owl.red,
-      cyan = "#6ae9f0",
-      purple = night_owl.purple,
-      blue = night_owl.blue,
-      dark_blue = "#0e293f",
-      light_blue = "#5f7e97",
-    }
+  elseif colorscheme == "catppuccin" then
+    local mocha = require("catppuccin.palettes").get_palette("mocha")
+
     local meta_colors = {
       -- lualine regions
-      bg = colors.dark,
-      bg_inactive = colors.dark_blue,
+      bg = mocha.base,
+      bg_inactive = mocha.mantle,
 
-      fg = colors.light,
-      fg_inactive = colors.light_blue,
+      fg = mocha.text,
+      fg_inactive = mocha.overlay0,
 
       -- colors
-      yellow = colors.yellow,
-      red = colors.red,
-      green = colors.green,
-      blue = colors.blue,
-      purple = colors.purple,
-      aqua = colors.cyan,
+      yellow = mocha.yellow,
+      red = mocha.red,
+      green = mocha.green,
+      blue = mocha.blue,
+      purple = mocha.pink,
+      aqua = mocha.teal,
     }
 
     return meta_colors

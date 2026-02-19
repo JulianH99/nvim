@@ -20,6 +20,7 @@ return {
         ["<C-s>"] = false,
         ["<C-v>"] = "actions.select_vsplit",
         ["<C-x>"] = "actions.select_split",
+        ["q"] = { "actions.close", mode = "n" },
       },
     })
 

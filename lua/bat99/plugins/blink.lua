@@ -4,7 +4,7 @@ return {
   dependencies = {
     "L3MON4D3/LuaSnip",
   },
-  version = "v1.7.0",
+  version = "1.*",
   opts = {
     enabled = function()
       return not vim.list_contains({ "DressingInput" }, vim.bo.filetype)
@@ -51,6 +51,10 @@ return {
             return ctx.mode == "cmdline"
           end,
         },
+      },
+      trigger = {
+        prefetch_on_insert = true,
+        show_on_insert = false,
       },
       menu = {
         draw = {
