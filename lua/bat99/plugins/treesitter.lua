@@ -1,48 +1,39 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
+  branch = "main",
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    -- "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-context",
   },
   config = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = {
-        "python",
-        "typescript",
-        "json",
-        "tsx",
-        "html",
-        "css",
-        "javascript",
-        "lua",
-        "go",
-        "astro",
-        "templ",
-        "scss",
-        "angular",
-      },
-      auto_install = true,
-      ignore_install = {},
-      highlight = {
-        enable = true,
-        disable = function(_, buf)
-          local max_filesize = 100 * 1024 -- 100 KB
-          local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-          if ok and stats and stats.size > max_filesize then
-            return true
-          end
-        end,
-      },
-      endwise = {
-        enable = true,
-      },
-      indent = {
-        enable = true,
-      },
+    require("nvim-treesitter").install({
+      "python",
+      "typescript",
+      "json",
+      "tsx",
+      "html",
+      "css",
+      "javascript",
+      "lua",
+      "go",
+      "astro",
+      "templ",
+      "scss",
+      "angular",
     })
 
-    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "<filetype>" },
+      callback = function()
+        vim.treesitter.start()
+        vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo[0][0].foldmethod = "expr"
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
+    })
+
+    --[[ local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
     parser_config.gotmpl = {
       install_info = {
         url = "https://github.com/ngalaiko/tree-sitter-go-template",
@@ -50,7 +41,7 @@ return {
       },
       filetype = "gotmpl",
       used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml", "gohtml" },
-    }
+    } ]]
 
     require("treesitter-context").setup({
       enable = true,

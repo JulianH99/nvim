@@ -38,17 +38,8 @@ return {
       opts.desc = "Show LSP type definitions"
       keymap.set("n", "gT", "<cmd>FzfLua lsp_typedefs<CR>", opts) -- show lsp type definitions
 
-      opts.desc = "See available code actions"
-      keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
-      opts.desc = "Smart rename"
-      keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
-
       opts.desc = "Show line diagnostics"
       keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
-
-      opts.desc = "Show documentation for what is under cursor"
-      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
@@ -119,6 +110,8 @@ return {
           --   },
           -- },
           filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+          capabilities = capabilities,
+          root_markers = { "tsconfig.json", "jsconfig.json", "package.json", "angular.json" },
         })
       elseif server == "html" then
         vim.lsp.config("html", {

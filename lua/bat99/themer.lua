@@ -5,6 +5,7 @@ local themes = {
   "everforest",
   "tundra",
   "catppuccin",
+  "rose-pine",
 }
 
 local M = {

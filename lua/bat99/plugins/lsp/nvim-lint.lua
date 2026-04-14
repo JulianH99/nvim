@@ -1,5 +1,6 @@
 return {
   "mfussenegger/nvim-lint",
+  event = { "BufReadPost", "BufNew" },
   config = function()
     local augroup = vim.api.nvim_create_augroup("NvimLintAuGroup", { clear = true })
 

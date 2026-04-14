@@ -14,6 +14,7 @@ return {
   },
   {
     "echasnovski/mini.icons",
+    event = "VeryLazy",
     version = "*",
     config = function()
       local miniIcons = require("mini.icons")
@@ -55,17 +56,5 @@ return {
     version = "*",
     event = "VeryLazy",
     config = true,
-  },
-  {
-    "nvim-mini/mini.sessions",
-    version = "*",
-    config = function()
-      require("mini.sessions").setup({})
-      local write_as_cwd = function()
-        local session_name = vim.fn.getcwd():gsub("/", "-")
-        MiniSessions.write(session_name)
-      end
-      vim.keymap.set("n", "<Leader>ws", write_as_cwd)
-    end,
   },
 }

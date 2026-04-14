@@ -66,6 +66,10 @@ return {
       fzfLua.buffers()
     end, "Find all buffers")
 
+    set("<leader>ft", function()
+      fzfLua.tabs()
+    end)
+
     local current_file_actions = require("fzf-lua").defaults.actions.files
     local actions = require("fzf-lua.actions")
 

@@ -102,6 +102,9 @@ return {
           name = "Blink Shopify Input Types",
           module = "blink-shopify-input-types",
         },
+        snippets = {
+          score_offset = 1,
+        },
       },
     },
     snippets = { preset = "luasnip" },
