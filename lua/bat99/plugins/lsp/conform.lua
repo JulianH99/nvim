@@ -17,7 +17,6 @@ return {
         templ = { "templ" },
         -- svelte = { "prettierd" },
         liquid = { nil },
-        cs = { "csharpier" },
         htmlangular = { "prettierd" },
 
         -- FIXME: install dotnet?

@@ -8,6 +8,7 @@ return {
       go = { "golangcilint" },
       -- php = { "phpcs" },
       html = { "htmlhint" },
+      python = { "ruff" },
       -- css = { "stylelint" },
       -- scss = { "stylelint" },
     }

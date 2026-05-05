@@ -84,11 +84,10 @@ return {
       "astro",
       "jsonls",
       "eslint",
-      "basedpyright",
       "vue_ls",
       "svelte",
-      "csharp_ls",
       "lemminx",
+      "ty",
     }
 
     for _, server in ipairs(servers) do
@@ -112,6 +111,22 @@ return {
           filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
           capabilities = capabilities,
           root_markers = { "tsconfig.json", "jsconfig.json", "package.json", "angular.json" },
+          settigs = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
+            },
+          },
         })
       elseif server == "html" then
         vim.lsp.config("html", {
