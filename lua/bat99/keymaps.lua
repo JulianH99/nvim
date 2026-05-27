@@ -35,4 +35,6 @@ map("n", "<leader>fm", function()
 end, { desc = "Format current buffer with LSP" })
 
 -- undotree
-map("n", "<leader>u", require("undotree").open, { desc = "Toggle undo tree" })
+map("n", "<leader>u", function()
+  require("undotree").open()
+end, { desc = "Toggle undo tree" })

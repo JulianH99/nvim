@@ -21,6 +21,7 @@ return {
       "templ",
       "scss",
       "angular",
+      "sql",
     })
 
     vim.api.nvim_create_autocmd("FileType", {

@@ -88,3 +88,30 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
     vim.bo.filetype = "htmlangular"
   end,
 })
+
+-- start treesitter
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    -- exclude oil
+
+    local exclude = {
+      "oil",
+      "fzf",
+      "mininotify",
+      "blink-cmp-documentation",
+      "blink-cmp-menu",
+      "blink-cmp-menu",
+      "blink-cmp-signature",
+      "trouble",
+      "DressingInput",
+      "oil-preview",
+      "harpoon",
+    }
+
+    if vim.tbl_contains(exclude, vim.bo.filetype) then
+      return
+    end
+    vim.treesitter.start()
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
