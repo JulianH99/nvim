@@ -21,6 +21,7 @@ return {
       "__pycache__",
       ".angular",
       ".next",
+      "dist",
     }
 
     local excludePatternsOpts = ""

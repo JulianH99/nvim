@@ -87,7 +87,7 @@ return {
       "vue_ls",
       "svelte",
       "lemminx",
-      "ty",
+      "rust_analyzer",
     }
 
     for _, server in ipairs(servers) do

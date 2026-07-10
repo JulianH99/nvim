@@ -94,24 +94,36 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     -- exclude oil
 
-    local exclude = {
-      "oil",
-      "fzf",
-      "mininotify",
-      "blink-cmp-documentation",
-      "blink-cmp-menu",
-      "blink-cmp-menu",
-      "blink-cmp-signature",
-      "trouble",
-      "DressingInput",
-      "oil-preview",
-      "harpoon",
+    local include = {
+      "liquid",
+      "html",
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "tsx",
+      "astro",
+      "htmlangular",
+      "css",
+      "scss",
+      "svelte",
+      "vue",
+      "xml",
+      "php",
+      "go",
+      "python",
+      "lua",
+      "json",
+      "markdown",
+      "yaml",
+      "yaml.docker-compose",
+      "bash",
+      "zsh",
     }
 
-    if vim.tbl_contains(exclude, vim.bo.filetype) then
-      return
+    if vim.tbl_contains(include, vim.bo.filetype) then
+      vim.treesitter.start()
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end
-    vim.treesitter.start()
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   end,
 })
