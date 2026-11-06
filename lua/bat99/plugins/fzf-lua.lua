@@ -10,9 +10,28 @@ return {
       vim.keymap.set(mode or "n", key, func, { desc = desc, silent = true, noremap = true })
     end
 
+    local excludePatterns = {
+      ".git",
+      "node_modules",
+      ".venv",
+      ".pycache",
+      "bin",
+      "build",
+      "venv",
+      "__pycache__",
+      ".angular",
+      ".next",
+      "dist",
+    }
+
+    local excludePatternsOpts = ""
+    for _, pattern in ipairs(excludePatterns) do
+      excludePatternsOpts = excludePatternsOpts .. "--exclude " .. pattern .. " "
+    end
+
     set("<leader>ff", function()
       fzfLua.files({
-        fd_opts = "--color=never --type f --hidden --follow --no-ignore --exclude .git --exclude node_modules --exclude .venv --exclude .pycache --exclude bin --exclude build --exclude venv",
+        fd_opts = "--color=never --type f --hidden --follow --no-ignore " .. excludePatternsOpts,
       })
     end, "Find all files")
 
@@ -47,6 +66,10 @@ return {
     set("<leader>fb", function()
       fzfLua.buffers()
     end, "Find all buffers")
+
+    set("<leader>ft", function()
+      fzfLua.tabs()
+    end)
 
     local current_file_actions = require("fzf-lua").defaults.actions.files
     local actions = require("fzf-lua.actions")

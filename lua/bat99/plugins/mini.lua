@@ -14,6 +14,7 @@ return {
   },
   {
     "echasnovski/mini.icons",
+    event = "VeryLazy",
     version = "*",
     config = function()
       local miniIcons = require("mini.icons")

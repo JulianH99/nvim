@@ -5,7 +5,7 @@ return {
     lualine = {
       {
         section = "x",
-        component_index = 2,
+        component_index = 1,
         change = "bg",
       },
     },

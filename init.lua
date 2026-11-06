@@ -35,3 +35,6 @@ vim.g.gruvbox_material_enable_italic = 1
 vim.g.gruvbox_material_foreground = "original"
 
 vim.cmd("RandomTheme")
+-- require("vim._core.ui2").enable({})
+
+vim.cmd("packadd nvim.undotree")

@@ -1,5 +1,6 @@
 return {
   "stevearc/conform.nvim",
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
     local conform = require("conform")
     conform.setup({
@@ -16,7 +17,7 @@ return {
         templ = { "templ" },
         -- svelte = { "prettierd" },
         liquid = { nil },
-        cs = { "csharpier" },
+        htmlangular = { "prettierd" },
 
         -- FIXME: install dotnet?
         -- cs = { "csharpier" },

@@ -1,5 +1,6 @@
 return {
   "kevinhwang91/nvim-ufo",
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = { "kevinhwang91/promise-async" },
   config = function()
     vim.keymap.set("n", "zR", require("ufo").openAllFolds, { desc = "Open folds" })
@@ -13,8 +14,12 @@ return {
     end, { desc = "Peek fold" })
 
     require("ufo").setup({
+      close_fold_kinds_for_ft = {
+        default = { "imports", "comment" },
+        c = { "comment", "region" },
+      },
       provider_selector = function(bufnr, ft, buft)
-        return { "lsp", "indent" }
+        return { "treesitter", "indent" }
       end,
     })
   end,

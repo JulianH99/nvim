@@ -38,17 +38,8 @@ return {
       opts.desc = "Show LSP type definitions"
       keymap.set("n", "gT", "<cmd>FzfLua lsp_typedefs<CR>", opts) -- show lsp type definitions
 
-      opts.desc = "See available code actions"
-      keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
-
-      opts.desc = "Smart rename"
-      keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
-
       opts.desc = "Show line diagnostics"
       keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
-
-      opts.desc = "Show documentation for what is under cursor"
-      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
@@ -93,11 +84,10 @@ return {
       "astro",
       "jsonls",
       "eslint",
-      "basedpyright",
       "vue_ls",
       "svelte",
-      "csharp_ls",
       "lemminx",
+      "rust_analyzer",
     }
 
     for _, server in ipairs(servers) do
@@ -119,6 +109,24 @@ return {
           --   },
           -- },
           filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+          capabilities = capabilities,
+          root_markers = { "tsconfig.json", "jsconfig.json", "package.json", "angular.json" },
+          settigs = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all",
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+              },
+            },
+          },
         })
       elseif server == "html" then
         vim.lsp.config("html", {
@@ -140,6 +148,7 @@ return {
         })
       elseif server == "emmet_ls" then
         local file_types = vim.list_extend(html_file_types, css_file_types)
+        file_types = vim.list_extend(file_types, { "htmlangular" })
         file_types = vim.list_extend(file_types, { "svelte" })
         vim.lsp.config("emmet_ls", {
           capabilities = capabilities,

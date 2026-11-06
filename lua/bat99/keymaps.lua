@@ -33,3 +33,8 @@ map({ "i", "n", "v" }, "<PageDown>", "<nop>")
 map("n", "<leader>fm", function()
   require("conform").format({ async = true, lsp_format = "fallback" })
 end, { desc = "Format current buffer with LSP" })
+
+-- undotree
+map("n", "<leader>u", function()
+  require("undotree").open()
+end, { desc = "Toggle undo tree" })

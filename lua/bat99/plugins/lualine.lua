@@ -1,5 +1,3 @@
-local themer = require("bat99.themer")
-
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
